@@ -18,3 +18,6 @@ export const pages = [
   "Regulatory Affairs",
   "Research & Development",
 ];
+
+
+// mongodb+srv://aniket_1811:<db_password>@atlascluster.isestxc.mongodb.net/
