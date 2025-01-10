@@ -1,18 +1,27 @@
+"use client";
+
 import Sidebar from "@/Components/AdminComponent/Sidebar";
-import { ToastContainer, toast } from 'react-toastify';
+import { useState } from "react";
+import { ToastContainer, toast } from "react-toastify";
 
+export default function layout({ children }) {
+  const [isOpen, setIsOpen] = useState(true); // Toggle for mobile menu
 
-export default function layout({children}){
-    return (
-        <>
-        <ToastContainer />
-        <div className="container mx-auto flex gap-5">
-            <div className="bg-neutral-100 hidden md:block md:w-[20%]">
-                <Sidebar />
-            </div>
-            <div className=" w-full md:w-[80%]">{children}</div>
+  // Function to handle sidebar toggle for mobile view
+  const toggleSidebar = () => setIsOpen(!isOpen);
+  return (
+    <>
+      <ToastContainer />
+      <div className="bg-slate-100 flex">
+        <div
+          className={`${
+            isOpen ? "w-64 p-3" : "w-16 p-1"
+          } transition-all duration-300 bg-gray-800 text-white min-h-[100%]`}
+        >
+          <Sidebar isOpen={isOpen} toggleSidebar={toggleSidebar} />
         </div>
-        
-        </>
-    )
+        <div className="p-2 md:p-5 w-full">{children}</div>
+      </div>
+    </>
+  );
 }

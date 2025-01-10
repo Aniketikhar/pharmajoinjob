@@ -4,7 +4,7 @@ import { FaLocationDot } from "react-icons/fa6";
 
 const Searchbar = () => {
   return (
-    <div className="flex flex-col items-center w-[100%]">
+    <div className="flex  items-center w-[100%]">
       <div className="w-full max-w-4xl flex flex-col md:flex-row bg-white shadow-lg  overflow-hidden border border-gray-200">
         {/* Position Input */}
         <div className="flex items-center flex-1 px-4 py-2">

@@ -1,5 +1,6 @@
-"use client"
+"use client";
 
+import DescriptionBox from "@/Components/AdminComponent/DescriptionBox";
 import React from "react";
 import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
@@ -8,11 +9,12 @@ const PostJobForm = () => {
   const {
     register,
     handleSubmit,
+    setValue,
     formState: { errors },
   } = useForm();
 
   const onSubmit = (data) => {
-    console.log("data")
+    console.log("data");
     console.log(data);
     toast.success("Job posted successfully");
   };
@@ -20,23 +22,33 @@ const PostJobForm = () => {
   return (
     <div className=" mx-auto p-6 bg-white shadow-md rounded-md">
       <h1 className="text-2xl font-bold mb-4">Post a Job</h1>
-      <p className="text-gray-600 mb-6">Find the best talent for your company</p>
+      <p className="text-gray-600 mb-6">
+        Find the best talent for your company
+      </p>
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
         {/* Job Title */}
         <div>
-          <label className="block text-sm font-medium text-gray-700">Job Title</label>
+          <label className="block text-sm font-medium text-gray-700">
+            Job Title
+          </label>
           <input
             type="text"
             {...register("jobTitle", { required: "Job Title is required" })}
             className="mt-1 block w-full p-2 border border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500"
             placeholder="Add job title, role vacancies etc"
           />
-          {errors.jobTitle && <span className="text-red-500 text-sm">{errors.jobTitle.message}</span>}
+          {errors.jobTitle && (
+            <span className="text-red-500 text-sm">
+              {errors.jobTitle.message}
+            </span>
+          )}
         </div>
 
         {/* Tags */}
         <div>
-          <label className="block text-sm font-medium text-gray-700">Tags</label>
+          <label className="block text-sm font-medium text-gray-700">
+            Tags
+          </label>
           <input
             type="text"
             {...register("tags")}
@@ -47,7 +59,9 @@ const PostJobForm = () => {
 
         {/* Job Role */}
         <div>
-          <label className="block text-sm font-medium text-gray-700">Job Role</label>
+          <label className="block text-sm font-medium text-gray-700">
+            Job Role
+          </label>
           <select
             {...register("jobRole", { required: "Job Role is required" })}
             className="mt-1 block w-full p-2 border border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500"
@@ -57,13 +71,19 @@ const PostJobForm = () => {
             <option value="designer">Designer</option>
             <option value="manager">Manager</option>
           </select>
-          {errors.jobRole && <span className="text-red-500 text-sm">{errors.jobRole.message}</span>}
+          {errors.jobRole && (
+            <span className="text-red-500 text-sm">
+              {errors.jobRole.message}
+            </span>
+          )}
         </div>
 
         {/* Salary */}
         <div className="grid grid-cols-3 gap-4">
           <div>
-            <label className="block text-sm font-medium text-gray-700">Min Salary</label>
+            <label className="block text-sm font-medium text-gray-700">
+              Min Salary
+            </label>
             <input
               type="number"
               {...register("minSalary")}
@@ -72,7 +92,9 @@ const PostJobForm = () => {
             />
           </div>
           <div>
-            <label className="block text-sm font-medium text-gray-700">Max Salary</label>
+            <label className="block text-sm font-medium text-gray-700">
+              Max Salary
+            </label>
             <input
               type="number"
               {...register("maxSalary")}
@@ -81,7 +103,9 @@ const PostJobForm = () => {
             />
           </div>
           <div>
-            <label className="block text-sm font-medium text-gray-700">Currency</label>
+            <label className="block text-sm font-medium text-gray-700">
+              Currency
+            </label>
             <select
               {...register("currency")}
               className="mt-1 block w-full p-2 border border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500"
@@ -95,7 +119,9 @@ const PostJobForm = () => {
 
         {/* Vacancies */}
         <div>
-          <label className="block text-sm font-medium text-gray-700">Vacancies</label>
+          <label className="block text-sm font-medium text-gray-700">
+            Vacancies
+          </label>
           <select
             {...register("vacancies")}
             className="mt-1 block w-full p-2 border border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500"
@@ -110,7 +136,9 @@ const PostJobForm = () => {
 
         {/* Job Level */}
         <div>
-          <label className="block text-sm font-medium text-gray-700">Job Level</label>
+          <label className="block text-sm font-medium text-gray-700">
+            Job Level
+          </label>
           <select
             {...register("jobLevel")}
             className="mt-1 block w-full p-2 border border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500"
@@ -125,7 +153,9 @@ const PostJobForm = () => {
         {/* Location */}
         <div className="grid grid-cols-2 gap-4">
           <div>
-            <label className="block text-sm font-medium text-gray-700">Country</label>
+            <label className="block text-sm font-medium text-gray-700">
+              Country
+            </label>
             <select
               {...register("country")}
               className="mt-1 block w-full p-2 border border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500"
@@ -137,7 +167,9 @@ const PostJobForm = () => {
             </select>
           </div>
           <div>
-            <label className="block text-sm font-medium text-gray-700">City</label>
+            <label className="block text-sm font-medium text-gray-700">
+              City
+            </label>
             <select
               {...register("city")}
               className="mt-1 block w-full p-2 border border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500"
@@ -151,14 +183,23 @@ const PostJobForm = () => {
         </div>
 
         {/* Job Description */}
-        <div>
-          <label className="block text-sm font-medium text-gray-700">Job Description</label>
+        {/* <div>
+          <label className="block text-sm font-medium text-gray-700">
+            Job Description
+          </label>
           <textarea
             {...register("jobDescription")}
             className="mt-1 block w-full p-2 border border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500"
             placeholder="Add your description..."
           ></textarea>
-        </div>
+        </div> */}
+
+        <DescriptionBox
+          setValue={setValue}
+          register={register}
+          fieldName="jobDescription"
+          errors={errors}
+        />
 
         {/* Submit Button */}
         <div>

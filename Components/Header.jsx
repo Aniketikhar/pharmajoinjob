@@ -2,21 +2,19 @@
 
 import { assets, pages } from '@/Assets/assets'
 import Image from 'next/image'
+import Link from 'next/link'
 import React from 'react'
-// import { useDispatch, useSelector } from 'react-redux';
-
-// ${selectedCategory == category ? "underline bg-blue-500 text-gray-50": ""}
 
 const Header = () => {
-  // const categories = useSelector((state) => state.category.categories);
-  // const selectedCategory = useSelector((state) => state.category.selectedCategory);
-  // const dispatch = useDispatch();
+
   return (
     <nav className='pt-3'>
       <div className=''>
         <div className='container mx-auto flex justify-between items-center'>
           <div className='ps-1 md:ps-5'>
-            <Image src={assets.pharmalogo} width={200} alt='pharmajoin' />
+            <Link href='/' passHref>
+              <Image src={assets.pharmalogo} width={200} alt='pharmajoin' />
+            </Link>
           </div>
           <ul className='flex gap-3 '>
            <li>about</li>

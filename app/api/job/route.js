@@ -10,9 +10,24 @@ const LoadDB = async () => {
 LoadDB();
 
 export async function GET(request) {
-  const jobs = await JobModel.find({});
 
+  const JobID = request.nextUrl.searchParams.get("id");
+  console.log(JobID);
+
+  if(JobID){
+    const job = await JobModel.findById(JobID);
+    if (!job) {
+      return NextResponse.json({ success: false, msg: "Job not found" }, { status: 404 });
+    }
+  
+    return NextResponse.json({ success: true, msg: "this is Job", job });
+  }else{
+    const jobs = await JobModel.find({});
+  
   return NextResponse.json({ success: true, msg: "All Jobs", jobs });
+  }
+
+  
 }
 
 export async function POST(request) {

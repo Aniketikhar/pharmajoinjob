@@ -2,10 +2,11 @@ import React from 'react'
 import JobCard from './Jobcard'
 
 const JobList = ({jobs}) => {
+  console.log(jobs)
   return (
     <div className="md:col-span-3 space-y-4 ">
           <div className="flex justify-between items-center">
-            <h1 className="text-2xl font-bold text-gray-900">3177 Jobs</h1>
+            <h1 className="text-2xl font-bold text-gray-900">{jobs.length} Jobs</h1>
             <select className="border border-gray-300 px-3 py-2 rounded-sm text-sm">
               <option value="">Filter by</option>
               <option value="Full-time">Full time</option>
@@ -13,7 +14,7 @@ const JobList = ({jobs}) => {
             </select>
           </div>
 
-          {jobs.map((job, index) => (
+          {jobs?.map((job, index) => (
             <JobCard key={index} {...job} />
           ))}
         </div>

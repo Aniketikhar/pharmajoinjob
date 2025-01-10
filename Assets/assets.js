@@ -1,7 +1,9 @@
 import pharmalogo from "@/Assets/pharmalogo.png";
+import bgimg from "@/Assets/bgimg.jpeg";
 
 export const assets = {
   pharmalogo,
+  bgimg,
 };
 
 export const pages = [

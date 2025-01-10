@@ -2,9 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
-/* nextjs-portal {
+nextjs-portal {
   display: none;
-} */
+}
 
 #categories{
   scrollbar-width: none; /* Firefox */
@@ -13,4 +13,11 @@
 
 #categories::-webkit-scrollbar {
   display: none; /* Chrome, Safari, Edge */
+}
+
+#hero{
+  background: url('../Assets/bgimg.jpeg');
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }

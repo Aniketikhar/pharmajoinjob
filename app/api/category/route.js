@@ -1,6 +1,7 @@
 import ConnectDB from "@/lib/config/db";
 import { NextResponse } from "next/server";
 import CategoryModel from "@/lib/models/CategoryModel";
+import JobModel from "@/lib/models/JobModel";
 
 const LoadDB = async () => {
   await ConnectDB();
@@ -9,13 +10,21 @@ const LoadDB = async () => {
 LoadDB();
 
 export async function GET(request) {
-  const Categories = await CategoryModel.find({});
+  const categryId = request.nextUrl.searchParams.get("id");
+  console.log(categryId);
 
-  return NextResponse.json({
-    success: true,
-    msg: "All Categories",
-    Categories,
-  });
+  if(categryId){
+    const job = await JobModel.find({ category: categryId });
+    if (!job) {
+      return NextResponse.json({ success: false, msg: "Job not found" }, { status: 404 });
+    }
+  
+    return NextResponse.json({ success: true, msg: "this is Job", job });
+  }else{
+    const categories = await CategoryModel.find({});
+  
+  return NextResponse.json({ success: true, msg: "All Jobs", categories });
+  }
 }
 
 export async function POST(request) {
