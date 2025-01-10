@@ -2,6 +2,7 @@
 
 import React from "react";
 import { useForm } from "react-hook-form";
+import { toast } from "react-toastify";
 
 const PostJobForm = () => {
   const {
@@ -13,6 +14,7 @@ const PostJobForm = () => {
   const onSubmit = (data) => {
     console.log("data")
     console.log(data);
+    toast.success("Job posted successfully");
   };
 
   return (
