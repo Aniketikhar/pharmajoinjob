@@ -28,20 +28,30 @@ export async function GET(request) {
 }
 
 export async function POST(request) {
-  const formData = await request.formData();
+  try {
+    // Parse JSON body from the request
+    const body = await request.json();
 
-  const category = {
-    name: formData.get("name"),
-    description: formData.get("description"),
-  };
+    const category = {
+      name: body.name,
+      description: body.description,
+    };
 
-  await CategoryModel.create(category);
+    // Save the category to the database
+    await CategoryModel.create(category);
 
-  return NextResponse.json({
-    success: true,
-    msg: "Category added successfully",
-    category,
-  });
+    return NextResponse.json({
+      success: true,
+      msg: "Category added successfully",
+      category,
+    });
+  } catch (error) {
+    console.error("Error creating category:", error.message);
+    return NextResponse.json(
+      { success: false, msg: "Failed to create category" },
+      { status: 500 }
+    );
+  }
 }
 
 

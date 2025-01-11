@@ -2,6 +2,7 @@ import ConnectDB from "@/lib/config/db";
 import { NextResponse } from "next/server";
 import JobModel from "@/lib/models/JobModel";
 import CategoryModel from "@/lib/models/CategoryModel";
+import mongoose from "mongoose";
 
 const LoadDB = async () => {
   await ConnectDB();
@@ -31,9 +32,15 @@ export async function GET(request) {
 }
 
 export async function POST(request) {
-  const formData = await request.formData();
+  const body = await request.json();
+  const categoryId = body.categoryId;
 
-  const categoryId = formData.get("categoryId");
+  if (!categoryId || !mongoose.Types.ObjectId.isValid(categoryId)) {
+    return NextResponse.json({
+      success: false,
+      msg: "Invalid category ID format",
+    });
+  }
 
   const category = await CategoryModel.findById(categoryId);
   if (!category) {
@@ -44,26 +51,20 @@ export async function POST(request) {
   }
 
   const job = {
-    title: formData.get("jobTitle"),
-    company: formData.get("company"),
-    jobDescription: formData.get("jobDescription"),
-    tags: formData.get("tags"),
-    jobRole: formData.get("jobRole"),
-    salary: {
-      min: formData.get("salaryMin"),
-      max: formData.get("salaryMax"),
-      currency: formData.get("currency"),
-    },
-    vacancies: formData.get("vacancies"),
-    jobLevel: formData.get("jobLevel"),
-    location: {
-      country: formData.get("country"),
-      city: formData.get("city"),
-    },
-    workProfile: formData.get("workProfile"),
-    lastDateToApply: formData.get("lastDateToApply"),
-    applyLink: formData.get("applyLink"),
-    postBy: formData.get("postBy"),
+    title: body.jobTitle,
+    company: body.company,
+    jobDescription: body.jobDescription,
+    tags: body.tags,
+    jobRole: body.jobRole,
+    salary: body.salary,
+    vacancies: body.vacancies,
+    jobLevel: body.jobLevel,
+    location: body.location,
+    workMode: body.workMode,
+    jobType: body.jobType,
+    lastDateToApply: body.lastDateToApply,
+    applyLink: body.applyLink,
+    postBy: body.postBy,
     category: categoryId,
   };
 

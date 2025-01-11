@@ -13,7 +13,7 @@ const Header = () => {
         <div className='container mx-auto flex justify-between items-center'>
           <div className='ps-1 md:ps-5'>
             <Link href='/' passHref>
-              <Image src={assets.pharmalogo} width={200} alt='pharmajoin' />
+              <Image src={assets.pharmalogo} priority={true} width={200} alt='pharmajoin' />
             </Link>
           </div>
           <ul className='flex gap-3 '>

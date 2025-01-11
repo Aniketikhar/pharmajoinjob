@@ -4,7 +4,6 @@ import 'quill/dist/quill.snow.css'; // Import Quill's CSS
 
 const DescriptionBox = ({ setValue, register, fieldName, errors }) => {
   const quillRef = useRef(null); // Reference to the Quill editor container
-  const [editorContent, setEditorContent] = useState(''); // State to store editor content
 
   useEffect(() => {
     // Initialize Quill editor
@@ -25,7 +24,6 @@ const DescriptionBox = ({ setValue, register, fieldName, errors }) => {
     quill.on('text-change', () => {
       let content = quill.root.innerHTML; // Get HTML content
       setValue(fieldName, content);
-      console.log(editorContent);
     });
   }, [setValue, fieldName]);
 

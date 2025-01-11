@@ -1,7 +1,7 @@
 "use client";
 
 import DescriptionBox from "@/Components/AdminComponent/DescriptionBox";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
 
@@ -12,12 +12,37 @@ const PostJobForm = () => {
     setValue,
     formState: { errors },
   } = useForm();
+  const [categories, setCategories] = useState([]);
 
-  const onSubmit = (data) => {
-    console.log("data");
+  const createJob = async (data) => {
     console.log(data);
-    toast.success("Job posted successfully");
+    const response = await fetch("http://localhost:3000/api/job", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    });
+
+    const datar = await response.json();
+    if (datar.success) {
+      toast.success("Job created successfully");
+    } else {
+      toast.error("Failed to create Job");
+    }
   };
+
+  // Fetch categories function
+  const fetchCategories = async () => {
+    const response = await fetch("http://localhost:3000/api/category");
+    const data = await response.json();
+    setCategories(data.categories);
+  };
+
+  // Fetch categories on component mount
+  useEffect(() => {
+    fetchCategories();
+  }, []);
 
   return (
     <div className=" mx-auto p-6 bg-white shadow-md rounded-md">
@@ -25,159 +50,205 @@ const PostJobForm = () => {
       <p className="text-gray-600 mb-6">
         Find the best talent for your company
       </p>
-      <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+      <form onSubmit={handleSubmit(createJob)} className="space-y-4">
         {/* Job Title */}
-        <div>
-          <label className="block text-sm font-medium text-gray-700">
-            Job Title
-          </label>
-          <input
-            type="text"
-            {...register("jobTitle", { required: "Job Title is required" })}
-            className="mt-1 block w-full p-2 border border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500"
-            placeholder="Add job title, role vacancies etc"
-          />
-          {errors.jobTitle && (
-            <span className="text-red-500 text-sm">
-              {errors.jobTitle.message}
-            </span>
-          )}
-        </div>
-
-        {/* Tags */}
-        <div>
-          <label className="block text-sm font-medium text-gray-700">
-            Tags
-          </label>
-          <input
-            type="text"
-            {...register("tags")}
-            className="mt-1 block w-full p-2 border border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500"
-            placeholder="Job keyword, tags etc"
-          />
-        </div>
-
-        {/* Job Role */}
-        <div>
-          <label className="block text-sm font-medium text-gray-700">
-            Job Role
-          </label>
-          <select
-            {...register("jobRole", { required: "Job Role is required" })}
-            className="mt-1 block w-full p-2 border border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500"
-          >
-            <option value="">Select...</option>
-            <option value="developer">Developer</option>
-            <option value="designer">Designer</option>
-            <option value="manager">Manager</option>
-          </select>
-          {errors.jobRole && (
-            <span className="text-red-500 text-sm">
-              {errors.jobRole.message}
-            </span>
-          )}
-        </div>
-
-        {/* Salary */}
-        <div className="grid grid-cols-3 gap-4">
-          <div>
+        <div className="flex flex-col md:flex-row gap-3">
+          <div className="flex-1">
             <label className="block text-sm font-medium text-gray-700">
-              Min Salary
+              Job Title
+            </label>
+            <input
+              type="text"
+              {...register("jobTitle", { required: "Job Title is required" })}
+              className="mt-1 block w-full p-2 border border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500"
+              placeholder="Add job title, role vacancies etc"
+            />
+            {errors.jobTitle && (
+              <span className="text-red-500 text-sm">
+                {errors.jobTitle.message}
+              </span>
+            )}
+          </div>
+          <div className="flex-1">
+            <label className="block text-sm font-medium text-gray-700">
+              Company
+            </label>
+            <input
+              type="text"
+              {...register("company", { required: "company is required" })}
+              className="mt-1 block w-full p-2 border border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500"
+              placeholder="Add Company Name"
+            />
+            {errors.company && (
+              <span className="text-red-500 text-sm">
+                {errors.company.message}
+              </span>
+            )}
+          </div>
+        </div>
+
+        <div className="flex flex-col md:flex-row gap-3">
+          {/* Tags */}
+          <div className="flex-1">
+            <label className="block text-sm font-medium text-gray-700">
+              Tags
+            </label>
+            <input
+              type="text"
+              {...register("tags")}
+              className="mt-1 block w-full p-2 border border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500"
+              placeholder="Job keyword, tags etc"
+            />
+          </div>
+          {/* Job Role */}
+          <div className="flex-1">
+            <label className="block text-sm font-medium text-gray-700">
+              Job Role
+            </label>
+            <input
+              type="text"
+              {...register("jobRole")}
+              className="mt-1 block w-full p-2 border border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500"
+              placeholder="Research Analyst, HR Manager etc."
+            />
+            {errors.jobRole && (
+              <span className="text-red-500 text-sm">
+                {errors.jobRole.message}
+              </span>
+            )}
+          </div>
+        </div>
+
+        <div className="w-full flex flex-col md:flex-row gap-3">
+          <div className="flex-1">
+            <label className="block text-sm font-medium text-gray-700">
+              Salary
+            </label>
+            <input
+              type="text"
+              {...register("salary")}
+              className="mt-1 block w-full p-2 border border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500"
+              placeholder="3.60-4.50 LPA"
+            />
+          </div>
+          {/* Vacancies */}
+          <div className="flex-1">
+            <label className="block text-sm font-medium text-gray-700">
+              Vacancies
             </label>
             <input
               type="number"
-              {...register("minSalary")}
+              {...register("vacancies")}
               className="mt-1 block w-full p-2 border border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500"
-              placeholder="Minimum Salary"
+              placeholder="12"
             />
           </div>
-          <div>
+
+          {/* Job Level */}
+          <div className="flex-1">
             <label className="block text-sm font-medium text-gray-700">
-              Max Salary
+              Job Level
             </label>
             <input
-              type="number"
-              {...register("maxSalary")}
+              type="text"
+              {...register("jobLevel")}
               className="mt-1 block w-full p-2 border border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500"
-              placeholder="Maximum Salary"
+              placeholder="Fresher, 2-4 year, 8 year etc."
             />
           </div>
-          <div>
+          {/* Job location */}
+          <div className="flex-1">
             <label className="block text-sm font-medium text-gray-700">
-              Currency
+              Job Location
             </label>
-            <select
-              {...register("currency")}
+            <input
+              type="text"
+              {...register("location")}
               className="mt-1 block w-full p-2 border border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500"
-            >
-              <option value="INR">INR</option>
-              <option value="USD">USD</option>
-              <option value="EUR">EUR</option>
-            </select>
+              placeholder="Mumbai, Pune etc."
+            />
           </div>
         </div>
 
-        {/* Vacancies */}
-        <div>
-          <label className="block text-sm font-medium text-gray-700">
-            Vacancies
-          </label>
-          <select
-            {...register("vacancies")}
-            className="mt-1 block w-full p-2 border border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500"
-          >
-            <option value="">Select...</option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-          </select>
-        </div>
-
-        {/* Job Level */}
-        <div>
-          <label className="block text-sm font-medium text-gray-700">
-            Job Level
-          </label>
-          <select
-            {...register("jobLevel")}
-            className="mt-1 block w-full p-2 border border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500"
-          >
-            <option value="">Select...</option>
-            <option value="entry">Entry Level</option>
-            <option value="mid">Mid Level</option>
-            <option value="senior">Senior Level</option>
-          </select>
-        </div>
-
-        {/* Location */}
-        <div className="grid grid-cols-2 gap-4">
-          <div>
+        <div className="flex flex-col md:flex-row gap-3">
+          <div className="flex-1">
             <label className="block text-sm font-medium text-gray-700">
-              Country
+              Work Mode
             </label>
             <select
-              {...register("country")}
+              {...register("workMode")}
               className="mt-1 block w-full p-2 border border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500"
             >
               <option value="">Select...</option>
-              <option value="India">India</option>
-              <option value="USA">USA</option>
-              <option value="UK">UK</option>
+              <option value="Work from Home">Work from Home</option>
+              <option value="Work from Office">Work from Office</option>
+              <option value="Hybrid">Hybrid</option>
             </select>
           </div>
-          <div>
+          <div className="flex-1">
             <label className="block text-sm font-medium text-gray-700">
-              City
+              Job Type
             </label>
             <select
-              {...register("city")}
+              {...register("jobType")}
               className="mt-1 block w-full p-2 border border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500"
             >
               <option value="">Select...</option>
-              <option value="Mumbai">Mumbai</option>
-              <option value="New York">New York</option>
-              <option value="London">London</option>
+              <option value="Part Time">Part Time</option>
+              <option value="Full Time">Full Time</option>
+            </select>
+          </div>
+          <div className="flex-1">
+            <label className="block text-sm font-medium text-gray-700">
+              Last Date to Apply
+            </label>
+            <input
+              type="date"
+              {...register("lastDateToApply")}
+              className="mt-1 block w-full p-2 border border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500"
+              placeholder="1/1/2025"
+            />
+          </div>
+          <div className="flex-1">
+            <label className="block text-sm font-medium text-gray-700">
+              Apply Link
+            </label>
+            <input
+              type="text"
+              {...register("applyLink")}
+              className="mt-1 block w-full p-2 border border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500"
+              placeholder="www.amazon.com"
+            />
+          </div>
+        </div>
+
+        <div className="flex flex-col md:flex-row gap-3">
+          <div className="flex-1">
+            <label className="block text-sm font-medium text-gray-700">
+              Post By
+            </label>
+            <input
+              type="text"
+              value={"admin"}
+              {...register("postBy")}
+              className="mt-1 block w-full p-2 border border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500"
+              placeholder="admin"
+            />
+          </div>
+          <div className="flex-1">
+            <label className="block text-sm font-medium text-gray-700">
+              Category<span className="text-red-500">*</span>
+            </label>
+            <select
+              {...register("categoryId", {required: "category is required"})}
+              className="mt-1 block w-full p-2 border border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500"
+            >
+              <opton key='0' value="">Select...</opton>
+              {categories?.map((category) => (
+                <option key={category._id} value={category._id}>
+                  {category.name}
+                </option>
+              ))}
             </select>
           </div>
         </div>

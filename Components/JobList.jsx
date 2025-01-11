@@ -15,7 +15,7 @@ const JobList = ({jobs}) => {
           </div>
 
           {jobs?.map((job, index) => (
-            <JobCard key={index} {...job} />
+            <JobCard key={index} job={job} />
           ))}
         </div>
   )

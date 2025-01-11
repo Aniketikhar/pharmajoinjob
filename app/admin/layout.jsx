@@ -16,7 +16,7 @@ export default function layout({ children }) {
         <div
           className={`${
             isOpen ? "w-64 p-3" : "w-16 p-1"
-          } transition-all duration-300 bg-gray-800 text-white min-h-[100%]`}
+          } transition-all duration-300 bg-gray-800 text-white min-h-screen`}
         >
           <Sidebar isOpen={isOpen} toggleSidebar={toggleSidebar} />
         </div>
