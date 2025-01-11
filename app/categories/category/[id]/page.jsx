@@ -1,27 +1,11 @@
 import JobsSection from "@/Components/JobsSection";
+import { fetchCategoryById } from "@/Utils/utils";
 import React from "react";
 
 const page = async ({ params }) => {
   const { id } = params;
   console.log("id", id);
-  let job = null;
-
-  try {
-    // Fetch the job details from the API
-    const response = await fetch(`http://localhost:3000/api/category?id=${id}`, {
-      cache: "no-store", // Avoid caching to ensure fresh data
-    });
-
-    if (!response.ok) {
-      throw new Error("Failed to fetch job details");
-    }
-
-    const data = await response.json();
-    job = data.job;
-    console.log("job", job);
-  } catch (error) {
-    console.error("Error fetching job:", error.message);
-  }
+  let job = await fetchCategoryById(id);
 
   // Handle case where job data is not available
   if (!job) {

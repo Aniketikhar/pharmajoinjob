@@ -1,13 +1,11 @@
 import Sidebar from "@/Components/Sidebar";
+import { fetchCategory } from "@/Utils/utils";
 import Link from "next/link";
 import React from "react";
 
 const page = async () => {
-  let categories = [];
-  const response = await fetch("http://localhost:3000/api/category");
-  const data = await response.json();
-  console.log(data);
-  categories = data.categories;
+  let categories = await fetchCategory();
+
 
   const colors = [
     "#FF6347", // Tomato
@@ -52,7 +50,7 @@ const page = async () => {
                 <Link key={index} href={`categories/category/${category._id}`}>
                   <div
                     style={{ background: getRandomGradient() }}
-                    className="text-gray-900 p-4 rounded-md hover:bg-slate-500 shadow-md flex flex-col gap-3 border border-gray-200"
+                    className="text-gray-900 p-4 mb-3 rounded-md hover:bg-slate-500 shadow-md flex flex-col gap-3 border border-gray-200"
                   >
                     <h1 className="font-bold text-2xl ">{category.name}</h1>
                     <p>{category.description}</p>

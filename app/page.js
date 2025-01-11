@@ -1,12 +1,10 @@
 import Hero from "@/Components/Hero";
 import JobsSection from "@/Components/JobsSection";
+import { fetchAllJobs } from "@/Utils/utils";
 
 export default async function Home() {
-  let jobs = [];
-  const response = await fetch("http://localhost:3000/api/job");
-  const data = await response.json();
-  jobs = data.jobs;
-  
+  let jobs = await fetchAllJobs();
+
 
   return (
     <>

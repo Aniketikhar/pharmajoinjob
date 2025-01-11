@@ -11,7 +11,6 @@ LoadDB();
 
 export async function GET(request) {
   const categryId = request.nextUrl.searchParams.get("id");
-  console.log(categryId);
 
   if(categryId){
     const job = await JobModel.find({ category: categryId });

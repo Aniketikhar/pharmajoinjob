@@ -1,8 +1,10 @@
 import pharmalogo from "@/Assets/pharmalogo.png";
+import pharmalogoremovebg from "@/Assets/pharmalogo-removebg.png";
 import bgimg from "@/Assets/bgimg.jpeg";
 
 export const assets = {
   pharmalogo,
+  pharmalogoremovebg,
   bgimg,
 };
 

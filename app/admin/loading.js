@@ -1,8 +1,11 @@
+import Loading from '@/Components/Loading'
 import React from 'react'
 
 const loading = () => {
   return (
-    <div>loading...</div>
+    <div className='h-screen'>
+      <Loading />
+    </div>
   )
 }
 

@@ -1,16 +1,8 @@
 import React from "react";
 import Searchbar from "./Searchbar";
 
-import {assets} from '@/Assets/assets'
 const Hero = () => {
   
-  // const style = {
-  //   backgroundImage: `url('Assets/bgimg.jpeg')`, // Correct background image syntax
-  //   backgroundPosition: 'center', // Correct background position
-  //   backgroundRepeat: 'no-repeat',
-  //   backgroundSize: 'cover', // Ensures the background image covers the entire section
-  // };
-
   return (
     <section
       id="hero"

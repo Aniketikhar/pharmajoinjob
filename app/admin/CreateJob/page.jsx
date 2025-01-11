@@ -11,6 +11,7 @@ const PostJobForm = () => {
     handleSubmit,
     setValue,
     formState: { errors },
+    reset
   } = useForm();
   const [categories, setCategories] = useState([]);
 
@@ -27,6 +28,7 @@ const PostJobForm = () => {
     const datar = await response.json();
     if (datar.success) {
       toast.success("Job created successfully");
+      reset();
     } else {
       toast.error("Failed to create Job");
     }
