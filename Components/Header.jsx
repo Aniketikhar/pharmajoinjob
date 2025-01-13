@@ -25,7 +25,7 @@ const Header = () => {
       <div className="">
         <div className="container mx-auto flex justify-between items-center">
           <div className="ps-1 md:ps-5">
-            <Link href="/" prefetch={true}>
+            <Link href="/" rel="preload" prefetch={true} as={"image"}>
               <Image
                 src={assets.pharmalogo}
                 priority={true}

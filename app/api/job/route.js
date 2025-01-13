@@ -13,7 +13,6 @@ LoadDB();
 export async function GET(request) {
 
   const JobID = request.nextUrl.searchParams.get("id");
-  console.log(JobID);
 
   if(JobID){
     const job = await JobModel.findById(JobID);

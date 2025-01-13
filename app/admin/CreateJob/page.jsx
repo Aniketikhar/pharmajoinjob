@@ -245,7 +245,7 @@ const PostJobForm = () => {
               {...register("categoryId", {required: "category is required"})}
               className="mt-1 block w-full p-2 border border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500"
             >
-              <opton key='0' value="">Select...</opton>
+              <option key='0' value="">Select...</option>
               {categories?.map((category) => (
                 <option key={category._id} value={category._id}>
                   {category.name}
@@ -256,7 +256,7 @@ const PostJobForm = () => {
         </div>
 
         {/* Job Description */}
-        {/* <div>
+        <div>
           <label className="block text-sm font-medium text-gray-700">
             Job Description
           </label>
@@ -265,14 +265,14 @@ const PostJobForm = () => {
             className="mt-1 block w-full p-2 border border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500"
             placeholder="Add your description..."
           ></textarea>
-        </div> */}
+        </div>
 
-        <DescriptionBox
+        {/* <DescriptionBox
           setValue={setValue}
           register={register}
           fieldName="jobDescription"
           errors={errors}
-        />
+        /> */}
 
         {/* Submit Button */}
         <div>

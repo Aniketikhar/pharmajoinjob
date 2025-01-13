@@ -3,7 +3,7 @@ import Sidebar from "@/Components/Sidebar";
 import React from "react";
 
 const page = async ({ params }) => {
-  const { id } = params; // Destructure the `id` from params
+  const { id } = await params; // Destructure the `id` from params
   let job = null;
 
   try {
@@ -18,7 +18,6 @@ const page = async ({ params }) => {
 
     const data = await response.json();
     job = data.job;
-    console.log("job", job);
   } catch (error) {
     console.error("Error fetching job:", error.message);
   }
