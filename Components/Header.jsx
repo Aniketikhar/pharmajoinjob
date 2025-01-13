@@ -42,7 +42,7 @@ const Header = () => {
         <div className="bg-slate-200 ">
           <ul
             id="categories"
-            className="container mx-auto py-3 flex flex-nowrap  overflow-x-scroll justify-start lg:justify-center items-center"
+            className="container mx-auto py-3 flex flex-nowrap gap-2 overflow-x-scroll justify-start items-center"
           >
             
             <button

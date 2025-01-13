@@ -3,7 +3,7 @@ import { fetchCategoryById } from "@/Utils/utils";
 import React from "react";
 
 const page = async ({ params }) => {
-  const { id } = params;
+  const { id } =await params;
   console.log("id", id);
   let job = await fetchCategoryById(id);
 

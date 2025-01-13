@@ -32,7 +32,7 @@ const page = async ({ params }) => {
   }
 
   return (
-    <div className="container mx-auto">
+    <div className="container mx-auto min-h-screen">
       <div className="flex flex-col md:flex-row gap-3 my-3 md:my-8">
         {/* Left Sidebar */}
         <div className="bg-slate-400 w-[20%] hidden lg:block">

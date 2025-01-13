@@ -1,4 +1,5 @@
-import React from 'react'
+"use client"
+import React, { useContext, useEffect, useState } from 'react'
 import JobCard from './Jobcard'
 
 const JobList = ({jobs}) => {
@@ -13,9 +14,11 @@ const JobList = ({jobs}) => {
             </select>
           </div>
 
-          {jobs?.map((job, index) => (
-            <JobCard key={index} job={job} />
-          ))}
+          <div className='flex flex-col gap-1 text-left md:gap-3'>
+            {jobs?.map((job, index) => (
+              <JobCard key={index} job={job} />
+            ))}
+          </div>
         </div>
   )
 }
