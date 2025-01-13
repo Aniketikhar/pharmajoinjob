@@ -1,6 +1,8 @@
+const API_URL = process.env.NEXT_PUBLIC_API_URL;
+
 export async function fetchCategory() {
   try{
-  const response = await fetch("http://localhost:3000/api/category");
+  const response = await fetch(`${API_URL}/api/category`);
   const data = await response.json();
   return data.categories;
   }catch(err){
@@ -11,7 +13,7 @@ export async function fetchCategory() {
 
 export async function fetchCategoryById(id) {
   try{
-  const response = await fetch(`http://localhost:3000/api/category?id=${id}`);
+  const response = await fetch(`${API_URL}/api/category?id=${id}`);
   const data = await response.json();
   return data.job;
   }catch(err){
@@ -22,7 +24,7 @@ export async function fetchCategoryById(id) {
 
 export async function fetchAllJobs() {
   try{
-  const response = await fetch("http://localhost:3000/api/job");
+  const response = await fetch(`${API_URL}/api/job`);
   const data = await response.json();
   return data.jobs;
   }catch (err){

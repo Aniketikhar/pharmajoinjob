@@ -1,6 +1,5 @@
 "use client";
 
-import DescriptionBox from "@/Components/AdminComponent/DescriptionBox";
 import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
@@ -17,7 +16,7 @@ const PostJobForm = () => {
 
   const createJob = async (data) => {
     console.log(data);
-    const response = await fetch("http://localhost:3000/api/job", {
+    const response = await fetch(`${API_URL}/api/job`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -36,7 +35,7 @@ const PostJobForm = () => {
 
   // Fetch categories function
   const fetchCategories = async () => {
-    const response = await fetch("http://localhost:3000/api/category");
+    const response = await fetch(`${API_URL}/api/category`);
     const data = await response.json();
     setCategories(data.categories);
   };

@@ -2,9 +2,11 @@ import Sidebar from "@/Components/Sidebar";
 import { fetchCategory } from "@/Utils/utils";
 import Link from "next/link";
 import React from "react";
+import { prisma } from "~/lib/prisma";
 
 const page = async () => {
   let categories = await fetchCategory();
+  
 
 
   const colors = [
