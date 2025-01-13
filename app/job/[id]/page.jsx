@@ -1,4 +1,5 @@
 import FullJob from "@/Components/FullJob";
+import Sidebar from "@/Components/Sidebar";
 import React from "react";
 
 const page = async ({ params }) => {
@@ -35,18 +36,18 @@ const page = async ({ params }) => {
     <div className="container mx-auto min-h-screen">
       <div className="flex flex-col md:flex-row gap-3 my-3 md:my-8">
         {/* Left Sidebar */}
-        <div className="bg-slate-400 w-[20%] hidden lg:block">
+        <div className=" w-[17%] hidden lg:block">
           left sidebar component
         </div>
 
         {/* Job Details */}
-        <div className="bg-green-300 w-full md:w-[73%] lg:w-[53%]">
+        <div className="bg-green-300 w-full md:w-[77%] lg:w-[57%]">
           <FullJob job={job} />
         </div>
 
         {/* Right Sidebar */}
-        <div className="bg-red-300 w-full md:w-[27%]">
-          right sidebar component
+        <div className=" w-full md:w-[27%]">
+          <Sidebar />
         </div>
       </div>
     </div>

@@ -21,7 +21,7 @@ function Sidebar() {
         </form>
       </div>
 
-      {/* Upload Resume */}
+      {/*
       <div className="bg-white p-4 rounded-lg shadow-md border border-gray-200">
         <h3 className="text-lg font-medium mb-3">Get noticed faster</h3>
         <p className="text-sm text-gray-600 mb-3">
@@ -31,7 +31,7 @@ function Sidebar() {
         <button className="w-full bg-orange-500 text-white px-4 py-2 rounded-lg hover:bg-orange-600 transition">
           Upload your resume
         </button>
-      </div>
+      </div> */}
     </div>
   );
 }

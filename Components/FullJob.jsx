@@ -1,5 +1,9 @@
-"use client"
+"use client";
 import { useEffect, useRef } from "react";
+import { FaLocationDot, FaUserGraduate } from "react-icons/fa6";
+import { IoTimeSharp } from "react-icons/io5";
+import { MdHomeWork } from "react-icons/md";
+import { PiMoneyWavyFill } from "react-icons/pi";
 
 export default function FullJob({ job }) {
   const descriptionRef = useRef(null);
@@ -9,9 +13,9 @@ export default function FullJob({ job }) {
       // Set the innerHTML directly
       descriptionRef.current.innerHTML = job.jobDescription;
     }
-  }, [job.jobDescription]); 
+  }, [job.jobDescription]);
   return (
-    <div className="bg-white p-4  shadow-md flex flex-col gap-3 border border-gray-200">
+    <div className="bg-white p-4 shadow-md flex flex-col gap-3 border border-gray-200">
       <div className="flex items-center justify-between">
         <div>
           <h3 className="text-lg text-gray-600 font-medium">{job.company}</h3>
@@ -25,13 +29,85 @@ export default function FullJob({ job }) {
       </div>
 
       <div className="flex items-center text-sm text-gray-500 gap-4">
-        <span>{`${job.location}`}</span>
-        <span>• {job.workMode}</span>
-        <span>• {`${job.salary}`}</span>
-        <span>• {job.jobLevel}</span>
+        <span className="flex items-center">
+          <FaLocationDot className="inline" />
+          &nbsp;{job.location}
+        </span>
+        <span className="flex items-center">
+          <MdHomeWork className="inline" />
+          &nbsp;
+          {job.workMode == "Work from Office"
+            ? "WFO"
+            : job.workMode == "Work from Home"
+            ? "WFH"
+            : job.workMode}
+        </span>
+        <span className="flex items-center">
+          <IoTimeSharp className="inline" />
+          &nbsp;{job.jobType}
+        </span>
+        <span className="flex items-center">
+          <PiMoneyWavyFill className="inline" />
+          &nbsp;{job.salary}
+        </span>
+        <span className="flex items-center">
+          <FaUserGraduate className="inline" />
+          &nbsp;{job.jobLevel}
+        </span>
       </div>
 
-      <p id="jd" ref={descriptionRef} className="text-gray-600 text-sm"></p>
+      <p id="jd" ref={descriptionRef} className="text-gray-600 text-md"></p>
+      <div>
+        <h3 className="font-semibold text-md">
+          How to Apply for {job.company}
+        </h3>
+        <p className="mb-3">
+          To apply for this job, interested candidates must follow the procedure
+          outlined below:
+        </p>
+
+        <p className="mb-3">
+          Click on the “Apply here” button provided below. You will be
+          redirected to the application page.
+        </p>
+
+        <ul className="list-decimal ps-2 md:ps-6">
+          <li>Fill in the application form with all the necessary details.</li>
+          <li>Submit all relevant documents, if required.</li>
+          <li>Make sure that all the details entered are correct.</li>
+          <li>Submit the application form & wait for the companys revert.</li>
+        </ul>
+      </div>
+      <div>
+        {
+          job?.tags?.split(",")
+        }
+      </div>
+      <div className="tags flex ">
+        {job?.tags ? (
+          typeof job.tags === "string" ? (
+            job.tags.split(",").map((tag, index) => (
+              <span
+                key={index}
+                className="inline-block px-3 py-1 rounded-xl bg-pink-700"
+              >
+                {tag.trim()}
+              </span>
+            ))
+          ) : Array.isArray(job.tags) ? (
+            job.tags.map((tag, index) => (
+              <span
+                key={index}
+                className="inline-block px-3 py-1 rounded-xl bg-pink-700"
+              >
+                {tag}
+              </span>
+            ))
+          ) : null
+        ) : (
+          <p>No tags available</p>
+        )}
+      </div>
     </div>
   );
 }
