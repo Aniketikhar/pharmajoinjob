@@ -80,7 +80,7 @@ const Footer = () => {
           </li>
         </ul>
       </div>
-      <p>© 2025 All rights reserved.</p>
+      <p>© 2025 All rights reserved</p>
     </div>
   );
 };
