@@ -6,15 +6,14 @@ import { toast } from "react-toastify";
 
 const Page = () => {
   const [categories, setCategories] = useState([]);
-  const [categoryName, setCategoryName] = useState("");
+  const [categoryName, setCategoryName] = useState([]);
   const [categoryDescription, setCategoryDescription] = useState("");
 
   
   // Fetch categories function
   const fetchCategories = async () => {
     const response = await fetchCategory();
-    const data = await response.json();
-    setCategories(data.categories);
+    setCategories(response);
   };
   
   // Fetch categories on component mount
