@@ -19,7 +19,7 @@ const page = () => {
   }, []);
 
   const deleteJob = async (id) => {
-      const response = await fetch(`${API_URL}/api/job?id=${id}`, {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/job?id=${id}`, {
         method: "DELETE",
       });
   

@@ -24,7 +24,7 @@ const Page = () => {
   // Create new category function
   const createCategory = async (e) => {
     e.preventDefault();
-    const response = await fetch(`${API_URL}/api/category`, {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/category`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -49,7 +49,7 @@ const Page = () => {
 
   const updateCategory = async (id, name, description) => {
     try {
-      const response = await fetch(`${API_URL}/api/category`, {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/category`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -74,7 +74,7 @@ const Page = () => {
 
   // Delete category function
   const deleteCategory = async (id) => {
-    const response = await fetch(`${API_URL}/api/category?id=${id}`, {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/category?id=${id}`, {
       method: "DELETE",
     });
 

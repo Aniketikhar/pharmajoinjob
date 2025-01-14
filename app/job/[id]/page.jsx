@@ -8,7 +8,7 @@ const page = async ({ params }) => {
 
   try {
     // Fetch the job details from the API
-    const response = await fetch(`${API_URL}/api/job?id=${id}`, {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/job?id=${id}`, {
       cache: "no-store", // Avoid caching to ensure fresh data
     });
 

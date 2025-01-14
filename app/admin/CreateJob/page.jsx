@@ -16,7 +16,7 @@ const PostJobForm = () => {
 
   const createJob = async (data) => {
     console.log(data);
-    const response = await fetch(`${API_URL}/api/job`, {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/job`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -35,7 +35,7 @@ const PostJobForm = () => {
 
   // Fetch categories function
   const fetchCategories = async () => {
-    const response = await fetch(`${API_URL}/api/category`);
+    const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/category`);
     const data = await response.json();
     setCategories(data.categories);
   };
