@@ -1,14 +1,74 @@
 "use client";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Searchbar from "./Searchbar";
 import JobsSection from "./JobsSection";
+import { fetchCategory } from "@/Utils/utils";
+import { assets } from "@/Assets/assets";
+import banner1 from "@/Assets/banner1.jpg";
+import banner2 from "@/Assets/banner2.jpg";
 
 const Hero = ({ jobs }) => {
+  const [categories, setCategories] = useState();
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const [filteredJobs, setFilteredJobs] = useState(jobs);
+  const [position, setPosition] = useState("");
+  const [location, setLocation] = useState("");
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      filterJobs(position, location);
+    }, 1000);
+  
+    return () => clearTimeout(timer);
+
+  },[position, location])
+
+
+  const filterJobs = (position, location) => {
+    const lowerPosition = position?.toLowerCase();
+    const lowerLocation = location?.toLowerCase();
+
+    const result = jobs?.filter(
+      (job) =>
+        job.title?.toLowerCase().includes(lowerPosition) ||
+        job.jobRole?.toLowerCase().includes(lowerPosition) ||
+        job.company?.toLowerCase().includes(lowerPosition) &&
+        job.location?.toLowerCase().includes(lowerLocation)
+    );
+
+    setFilteredJobs(result);
+  };
+
+  // Background images for the slider
+  const backgroundImages = [banner1, banner2];
+
+  useEffect(() => {
+    fetchCategory()
+      .then((data) => setCategories(data))
+      .catch((error) => console.error(error));
+  }, []);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentSlide((prevSlide) => (prevSlide + 1) % backgroundImages.length);
+    }, 5000);
+
+    return () => clearInterval(interval); // Cleanup interval on unmount
+  }, [backgroundImages.length]);
+
   return (
     <>
-      <section id="hero" className=" py-10 text-center md:text-left">
-        <div className=" container mx-auto">
-          <div>
+      <section id="hero" className=" text-center md:text-left">
+        <div
+          className=" py-10"
+          style={{
+            backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("${backgroundImages[currentSlide].src}")`,
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+            transition: "background-image 2s ease-in-out",
+          }}
+        >
+          <div className="container mx-auto text-white">
             <h1 className="font-bold text-3xl pt-10 pb-5">
               Get a New Job with PharmaJoin Right Now!
             </h1>
@@ -21,11 +81,21 @@ const Hero = ({ jobs }) => {
               growth.
             </p>
           </div>
-          <div className="py-10">
-            <Searchbar />
+          <div className="py-10 container mx-auto">
+            <Searchbar position={position} setPosition={setPosition} location={location} setLocation={setLocation} />
+          </div>
+          <div className="container mx-auto pb-10 flex flex-wrap gap-2 md:gap-4 flex-shrink-0">
+            {categories?.map((category, index) => (
+              <div
+                key={index}
+                className="px-3 py-1 border-2 text-white border-gray-100 rounded-sm hover:border-blue-600 hover:bg-blue-600 hover:text-white"
+              >
+                {category.name}
+              </div>
+            ))}
           </div>
         </div>
-        <JobsSection jobs={jobs} />
+        <JobsSection jobs={filteredJobs} />
       </section>
     </>
   );

@@ -5,11 +5,13 @@ import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import { fetchCategory } from "@/Utils/utils";
 import { useRouter } from "next/navigation";
+import { FaHome } from "react-icons/fa";
 
 const Header = () => {
   const [active, setActive] = useState("Home");
   const [categories, setCategories] = useState([]);
   const router = useRouter();
+
 
   const fetchCate = async () => {
     const response = await fetchCategory();
@@ -58,7 +60,7 @@ const Header = () => {
                   className="transition-transform duration-300 group-hover:scale-125"
                 />
               </a>
-            </li >
+            </li>
             <li className="group">
               <a href="">
                 <Image
@@ -97,7 +99,7 @@ const Header = () => {
             </li>
           </ul>
         </div>
-        <div className="bg-slate-200 ">
+        <div className="bg-blue-800 ">
           <div
             id="categories"
             className="container mx-auto py-3 flex flex-nowrap gap-2 overflow-x-scroll justify-start items-center"
@@ -109,10 +111,10 @@ const Header = () => {
                 router.push("/");
               }}
               className={`${
-                active == "Home" ? "bg-blue-500 underline text-white" : ""
-              } text-md text-gray-900 px-2 py-1 rounded-md  hover:underline hover:bg-blue-500 hover:text-gray-50`}
+                active == "Home" ? "bg-blue-600 underline" : ""
+              } text-md text-white px-2 py-1 rounded-sm  hover:underline hover:bg-blue-500 hover:text-gray-50`}
             >
-              Home
+              <FaHome className="text-xl" />
             </button>
             <button
               key={"all"}
@@ -122,9 +124,9 @@ const Header = () => {
               }}
               className={`${
                 active == "All Categories"
-                  ? "bg-blue-500 underline text-white"
+                  ? "bg-blue-600 underline"
                   : ""
-              } text-md text-gray-900 px-2 py-1 rounded-md  hover:underline hover:bg-blue-500 hover:text-gray-50`}
+              } text-md text-white px-2 py-1 rounded-sm flex-shrink-0 hover:underline hover:bg-blue-600 hover:text-gray-50`}
             >
               All Categories
             </button>
@@ -137,9 +139,9 @@ const Header = () => {
                 }}
                 className={`${
                   active == category.name
-                    ? "bg-blue-500 underline text-white"
+                    ? "bg-blue-600 underline"
                     : ""
-                } text-md text-gray-900 px-2 py-1 rounded-md  hover:underline hover:bg-blue-500 hover:text-gray-50`}
+                } text-md flex-shrink-0 text-white px-2 py-1 rounded-sm  hover:underline hover:bg-blue-600 hover:text-gray-50`}
               >
                 {category.name}
               </button>

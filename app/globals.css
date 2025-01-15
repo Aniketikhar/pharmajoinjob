@@ -16,8 +16,8 @@ nextjs-portal {
 }
 
 #hero{
-  background: url('../Assets/bgimg.jpeg');
+  /* background: url('../Assets/bgimg.jpeg');
   background-position: center center;
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: cover; */
 }
