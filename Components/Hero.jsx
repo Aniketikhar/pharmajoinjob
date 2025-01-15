@@ -4,8 +4,8 @@ import Searchbar from "./Searchbar";
 import JobsSection from "./JobsSection";
 import { fetchCategory } from "@/Utils/utils";
 import { assets } from "@/Assets/assets";
-import banner1 from "@/Assets/banner1.jpg";
-import banner2 from "@/Assets/banner2.jpg";
+
+
 
 const Hero = ({ jobs }) => {
   const [categories, setCategories] = useState();
@@ -13,6 +13,7 @@ const Hero = ({ jobs }) => {
   const [filteredJobs, setFilteredJobs] = useState(jobs);
   const [position, setPosition] = useState("");
   const [location, setLocation] = useState("");
+
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -40,7 +41,7 @@ const Hero = ({ jobs }) => {
   };
 
   // Background images for the slider
-  const backgroundImages = [banner1, banner2];
+  const backgroundImages = [assets.banner1, assets.banner2];
 
   useEffect(() => {
     fetchCategory()
@@ -56,8 +57,11 @@ const Hero = ({ jobs }) => {
     return () => clearInterval(interval); // Cleanup interval on unmount
   }, [backgroundImages.length]);
 
+  
+
   return (
     <>
+    
       <section id="hero" className=" text-center md:text-left">
         <div
           className=" py-10"

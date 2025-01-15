@@ -1,4 +1,5 @@
 import Sidebar from "@/Components/Sidebar";
+import WrapPopUp from "@/Components/WrapPopUp";
 import { fetchCategory } from "@/Utils/utils";
 import Link from "next/link";
 import React from "react";
@@ -37,6 +38,7 @@ const page = async () => {
 
   return (
     <>
+    <WrapPopUp />
       <div className="min-h-screen bg-gray-100 flex justify-center py-8">
         <div className="container mx-auto w-full flex flex-col md:flex-row gap-5 px-4">
           {/* category Listings */}

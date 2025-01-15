@@ -1,4 +1,5 @@
 import JobsSection from "@/Components/JobsSection";
+import WrapPopUp from "@/Components/WrapPopUp";
 import { fetchCategoryById } from "@/Utils/utils";
 import React from "react";
 
@@ -17,6 +18,7 @@ const page = async ({ params }) => {
   }
   return (
     <>
+    <WrapPopUp />
       <JobsSection jobs={job} />
     </>
   );

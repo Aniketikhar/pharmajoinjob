@@ -19,7 +19,7 @@ const Footer = () => {
         </div>
         <ul className="flex gap-1 md:gap-3 ">
           <li className="group">
-            <a href="">
+            <a href="https://chat.whatsapp.com/Kbypm5EOrMiIKDnAG1G7vb" target="_blank">
               <Image
                 src={assets.whatsapp}
                 priority={true}
@@ -55,7 +55,7 @@ const Footer = () => {
             </a>
           </li>
           <li className="group">
-            <a href="">
+            <a href="https://t.me/pharmajoin" target="_blank">
               <Image
                 src={assets.telegram}
                 priority={true}
@@ -67,7 +67,7 @@ const Footer = () => {
             </a>
           </li>
           <li className="group">
-            <a href="">
+            <a href="https://www.linkedin.com/in/sachin-kedar-092977339/?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" target="_blank">
               <Image
                 src={assets.linkedIn}
                 title="linkedIn"
@@ -81,6 +81,11 @@ const Footer = () => {
         </ul>
       </div>
       <p>© 2025 All rights reserved</p>
+      <ul className="flex justify-center gap-5">
+        <li><a href="/aboutus">About Us</a></li>|
+        <li><a href="/privacy-policies">Privacy Policy</a></li>|
+        <li><a href="/contact">Contact Us</a></li>
+      </ul>
     </div>
   );
 };

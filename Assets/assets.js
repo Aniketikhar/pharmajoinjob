@@ -6,8 +6,9 @@ import instagram from "@/Assets/instagram.png";
 import linkedIn from "@/Assets/linkedin.png";
 import telegram from "@/Assets/telegram.png";
 import whatsapp from "@/Assets/whatsapp.png";
-import banner1 from "@/Assets/banner1.jpg";
-import banner2 from "@/Assets/banner2.jpg";
+import banner1 from "@/Assets/banner1.webp";
+import banner2 from "@/Assets/banner2.webp";
+import aboutus from "@/Assets/aboutus.png";
 
 export const assets = {
   pharmalogo,
@@ -19,7 +20,8 @@ export const assets = {
   telegram,
   whatsapp,
   banner1,
-  banner2
+  banner2,
+  aboutus,
 };
 
 export const pages = [
