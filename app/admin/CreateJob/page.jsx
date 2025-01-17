@@ -16,9 +16,9 @@ const PostJobForm = () => {
 
   const createJob = async (data) => {
     console.log(data);
-    const formattedTags = Array.isArray(data.tags)
-      ? data.tags.map((tag) => tag.trim()) // Ensure tags are trimmed
-      : data.tags.split(",").map((tag) => tag.trim());
+    const formattedTags = Array.isArray(data?.tags)
+      ? data?.tags.map((tag) => tag.trim()) // Ensure tags are trimmed
+      : data?.tags.split(",").map((tag) => tag.trim());
 
     const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/job`, {
       method: "POST",

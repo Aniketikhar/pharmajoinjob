@@ -79,7 +79,7 @@ export default function FullJob({ job }) {
         </ul>
       </div>
       <div className="flex flex-row items-center mt-2 gap-2">
-          {job?.tags.map((tag, index) => (
+          {job?.tags?.map((tag, index) => (
             <div
               className="rounded-2xl text-white bg-purple-400 px-2 py-1 text-sm"
               key={index}
