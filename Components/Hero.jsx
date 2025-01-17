@@ -6,6 +6,7 @@ import { fetchCategory } from "@/Utils/utils";
 import { assets } from "@/Assets/assets";
 import ConsultationSection from "./Cunsultancy";
 import JobsByQualAndLoc from "./JobsByQualAndLoc";
+import Link from "next/link";
 
 
 
@@ -92,12 +93,13 @@ const Hero = ({ jobs }) => {
           </div>
           <div className="container mx-auto pb-10 flex flex-wrap gap-2 md:gap-4 flex-shrink-0">
             {categories?.map((category, index) => (
-              <div
-                key={index}
-                className="px-3 py-1 border-2 text-white border-gray-100 rounded-sm hover:border-blue-600 hover:bg-blue-600 hover:text-white"
-              >
-                {category.name}
-              </div>
+              <Link
+              href={'/categories/category/' + category._id}
+              key={index}
+              className="px-3 py-1 border-2 text-white border-gray-100 rounded-sm hover:border-blue-600 hover:bg-blue-600 hover:text-white"
+            >
+              {category.name}
+            </Link>
             ))}
           </div>
         </div>

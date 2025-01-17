@@ -44,7 +44,7 @@ const page = async ({ params }) => {
           <div className=" w-[17%] hidden lg:block">left sidebar component</div>
 
           {/* Job Details */}
-          <div className="bg-green-300 w-full md:w-[77%] lg:w-[57%]">
+          <div className=" w-full md:w-[77%] lg:w-[57%]">
             <FullJob job={job} />
           </div>
 

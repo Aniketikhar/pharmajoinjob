@@ -67,6 +67,16 @@ export default function JobCard({ job }) {
             &nbsp;{job.jobLevel}
           </span>
         </div>
+        <div className="flex flex-row items-center mt-2 gap-2">
+          {job?.tags.map((tag, index) => (
+            <div
+              className="rounded-2xl text-white bg-purple-400 px-2 py-1 text-sm"
+              key={index}
+            >
+              {tag}
+            </div>
+          ))}
+        </div>
       </div>
       <div className="flex justify-between flex-row md:flex-col pt-3 pb-2 md:p-0">
         <button onClick={handleShare} className="flex justify-end">

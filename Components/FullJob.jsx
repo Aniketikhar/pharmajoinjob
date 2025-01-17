@@ -78,36 +78,16 @@ export default function FullJob({ job }) {
           <li>Submit the application form & wait for the companys revert.</li>
         </ul>
       </div>
-      <div>
-        {
-          job?.tags?.split(",")
-        }
-      </div>
-      <div className="tags flex ">
-        {job?.tags ? (
-          typeof job.tags === "string" ? (
-            job.tags.split(",").map((tag, index) => (
-              <span
-                key={index}
-                className="inline-block px-3 py-1 rounded-xl bg-pink-700"
-              >
-                {tag.trim()}
-              </span>
-            ))
-          ) : Array.isArray(job.tags) ? (
-            job.tags.map((tag, index) => (
-              <span
-                key={index}
-                className="inline-block px-3 py-1 rounded-xl bg-pink-700"
-              >
-                {tag}
-              </span>
-            ))
-          ) : null
-        ) : (
-          <p>No tags available</p>
-        )}
-      </div>
+      <div className="flex flex-row items-center mt-2 gap-2">
+          {job?.tags.map((tag, index) => (
+            <div
+              className="rounded-2xl text-white bg-purple-400 px-2 py-1 text-sm"
+              key={index}
+            >
+              {tag}
+            </div>
+          ))}
+        </div>
     </div>
   );
 }
