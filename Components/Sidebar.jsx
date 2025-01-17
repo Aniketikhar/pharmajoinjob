@@ -1,3 +1,4 @@
+import FollowUs from "./FollowUs";
 
 function Sidebar() {
   return (
@@ -20,6 +21,7 @@ function Sidebar() {
           </button>
         </form>
       </div>
+      <FollowUs />
 
       {/*
       <div className="bg-white p-4 rounded-lg shadow-md border border-gray-200">
