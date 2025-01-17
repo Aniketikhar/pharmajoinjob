@@ -9,6 +9,7 @@ import whatsapp from "@/Assets/whatsapp.png";
 import banner1 from "@/Assets/banner1.webp";
 import banner2 from "@/Assets/banner2.webp";
 import aboutus from "@/Assets/aboutus.png";
+import consultbg from "@/Assets/consultantbg.png";
 
 export const assets = {
   pharmalogo,
@@ -22,6 +23,7 @@ export const assets = {
   banner1,
   banner2,
   aboutus,
+  consultbg
 };
 
 export const pages = [

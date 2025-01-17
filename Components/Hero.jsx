@@ -4,6 +4,7 @@ import Searchbar from "./Searchbar";
 import JobsSection from "./JobsSection";
 import { fetchCategory } from "@/Utils/utils";
 import { assets } from "@/Assets/assets";
+import ConsultationSection from "./Cunsultancy";
 
 
 
@@ -100,6 +101,7 @@ const Hero = ({ jobs }) => {
           </div>
         </div>
         <JobsSection jobs={filteredJobs} />
+        <ConsultationSection />
       </section>
     </>
   );
