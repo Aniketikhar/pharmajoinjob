@@ -1,4 +1,5 @@
 "use client"
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import React, { memo, useMemo } from "react";
 
@@ -59,14 +60,14 @@ const JobsByQualAndLoc = memo(() => {
         <h1 className="text-2xl font-bold mb-4">Jobs By Qualification</h1>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto">
           {qualifications?.map((qualification, index) => (
-            <div
+            <Link
               key={index}
-              onClick={() => router.push(`/job?findby=${qualification}`)}
+              href={`/job?findby=${qualification}`}
               className="flex cursor-pointer justify-center items-center text-white font-semibold text-center h-16 rounded-md shadow-md hover:scale-105 transition-transform"
               style={{ backgroundColor: generateRandomColor() }}
             >
               {qualification}
-            </div>
+            </Link>
           ))}
         </div>
       </div>
@@ -74,14 +75,14 @@ const JobsByQualAndLoc = memo(() => {
         <h1 className="text-2xl font-bold mb-4">Jobs By Location</h1>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto">
           {locations?.map((location, index) => (
-            <div
+            <Link
               key={index}
-              onClick={() => router.push(`/job?findby=${location}`)}
+              href={`/job?findby=${location}`}
               className="flex cursor-pointer justify-center items-center bg-green-500 text-white font-semibold text-center h-16 rounded-md shadow-md hover:scale-105 transition-transform"
               style={{ backgroundColor: generateRandomColor() }}
             >
               {location}
-            </div>
+            </Link>
           ))}
         </div>
       </div>

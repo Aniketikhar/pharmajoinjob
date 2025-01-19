@@ -11,23 +11,48 @@ const LoadDB = async () => {
 LoadDB();
 
 export async function GET(request) {
-
   const JobID = request.nextUrl.searchParams.get("id");
+  const findby = request.nextUrl.searchParams.get("findby");
 
-  if(JobID){
-    const job = await JobModel.findById(JobID);
-    if (!job) {
-      return NextResponse.json({ success: false, msg: "Job not found" }, { status: 404 });
+  try {
+    if (JobID) {
+      const job = await JobModel.findById(JobID);
+      if (!job) {
+        return NextResponse.json(
+          { success: false, msg: "Job not found" },
+          { status: 404 }
+        );
+      }
+
+      return NextResponse.json({ success: true, msg: "this is Job", job });
+    } else if (findby) {
+      const jobs = await JobModel.find({
+        $or: [
+          { tags: { $in: [new RegExp(`^${findby}$`, "i")] } }, // Case-insensitive regex for tags
+          { location: { $regex: new RegExp(`^${findby}$`, "i") } } // Case-insensitive regex for location
+        ],
+      });
+
+      if (jobs.length === 0) {
+        return NextResponse.json(
+          { success: false, msg: "No jobs found matching the criteria" },
+          { status: 404 }
+        );
+      }
+
+      return NextResponse.json({ success: true, msg: "Jobs found", jobs });
+    } else {
+      const jobs = await JobModel.find({});
+
+      return NextResponse.json({ success: true, msg: "All Jobs", jobs });
     }
-  
-    return NextResponse.json({ success: true, msg: "this is Job", job });
-  }else{
-    const jobs = await JobModel.find({});
-  
-  return NextResponse.json({ success: true, msg: "All Jobs", jobs });
+  } catch (error) {
+    console.error("Error fetching jobs:", error);
+    return NextResponse.json(
+      { success: false, msg: "Server error", error: error.message },
+      { status: 500 }
+    );
   }
-
-  
 }
 
 export async function POST(request) {
@@ -75,7 +100,6 @@ export async function POST(request) {
     job,
   });
 }
-
 
 // Update a job
 export async function PUT(request) {
