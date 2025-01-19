@@ -56,7 +56,7 @@ export default function FullJob({ job }) {
         </span>
       </div>
 
-      <p id="jd" ref={descriptionRef} className="text-gray-600 text-md"></p>
+      <p id="jd" ref={descriptionRef} className="text-gray-600"></p>
       <div>
         <h3 className="font-semibold text-md">
           How to Apply for {job.company}

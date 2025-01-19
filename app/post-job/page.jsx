@@ -57,7 +57,7 @@ const PostJobForm = () => {
   }, []);
 
   return (
-    <div className=" mx-auto p-6 bg-white shadow-md rounded-md">
+    <div className="container mx-auto p-6 bg-white shadow-md rounded-md">
       <h1 className="text-2xl font-bold mb-4">Post a Job</h1>
       <p className="text-gray-600 mb-6">
         Find the best talent for your company
@@ -107,15 +107,10 @@ const PostJobForm = () => {
             </label>
             <input
               type="text"
-              {...register("tags", { required: "tags are required" })}
+              {...register("tags")}
               className="mt-1 block w-full p-2 border border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500"
               placeholder="Job keyword, tags etc"
             />
-            {errors.tags && (
-              <span className="text-red-500 text-sm">
-                {errors.tags.message}
-              </span>
-            )}
           </div>
           {/* Job Role */}
           <div className="flex-1">
@@ -251,11 +246,15 @@ const PostJobForm = () => {
             </label>
             <input
               type="text"
-              value={"admin"}
-              {...register("postBy")}
+              {...register("postBy", { required: "PostBy is required" })}
               className="mt-1 block w-full p-2 border border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500"
-              placeholder="admin"
+              placeholder="john doe"
             />
+            {errors.postBy && (
+              <span className="text-red-500 text-sm">
+                {errors.postBy.message}
+              </span>
+            )}
           </div>
           <div className="flex-1">
             <label className="block text-sm font-medium text-gray-700">

@@ -8,6 +8,7 @@ import ConsultationSection from "./Cunsultancy";
 import JobsByQualAndLoc from "./JobsByQualAndLoc";
 import Link from "next/link";
 import SocialMediaBar from "./SocialMediaBar";
+import Jobpost from "./Jobpost";
 
 
 
@@ -108,6 +109,7 @@ const Hero = ({ jobs }) => {
         <SocialMediaBar />
         <ConsultationSection />
         <JobsByQualAndLoc />
+        <Jobpost />
       </section>
     </>
   );
