@@ -3,6 +3,13 @@
 import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
+import dynamic from "next/dynamic";
+
+// Dynamically import DescriptionBox
+const DescriptionBox = dynamic(
+  () => import("@/Components/AdminComponent/DescriptionBox"),
+  { ssr: false }
+);
 
 const PostJobForm = () => {
   const {
@@ -259,7 +266,7 @@ const PostJobForm = () => {
         </div>
 
         {/* Job Description */}
-        <div>
+        {/* <div>
           <label className="block text-sm font-medium text-gray-700">
             Job Description
           </label>
@@ -268,14 +275,14 @@ const PostJobForm = () => {
             className="mt-1 block w-full p-2 border border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500"
             placeholder="Add your description..."
           ></textarea>
-        </div>
+        </div> */}
 
-        {/* <DescriptionBox
+        <DescriptionBox
           setValue={setValue}
           register={register}
           fieldName="jobDescription"
           errors={errors}
-        /> */}
+        />
 
         {/* Submit Button */}
         <div>
