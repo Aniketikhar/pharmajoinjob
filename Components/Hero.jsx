@@ -107,9 +107,9 @@ const Hero = ({ jobs }) => {
         </div>
         <JobsSection jobs={filteredJobs} />
         <SocialMediaBar />
-        <ConsultationSection />
         <JobsByQualAndLoc />
         <Jobpost />
+        <ConsultationSection />
       </section>
     </>
   );

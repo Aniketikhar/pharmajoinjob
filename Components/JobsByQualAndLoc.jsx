@@ -55,35 +55,37 @@ const JobsByQualAndLoc = memo(() => {
   ];
 
   return (
-    <div className="min-h-screen p-4 bg-gray-50">
-      <div className="text-center">
-        <h1 className="text-2xl font-bold mb-4">Jobs By Qualification</h1>
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto">
-          {qualifications?.map((qualification, index) => (
-            <Link
-              key={index}
-              href={`/job?findby=${qualification}`}
-              className="flex cursor-pointer justify-center items-center text-white font-semibold text-center h-16 rounded-md shadow-md hover:scale-105 transition-transform"
-              style={{ backgroundColor: generateRandomColor() }}
-            >
-              {qualification}
-            </Link>
-          ))}
+    <div className="bg-gray-50">
+      <div className=" container mx-auto py-10 bg-gray-50">
+        <div className="text-center">
+          <h1 className="text-2xl font-bold mb-4">Jobs By Qualification</h1>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto">
+            {qualifications?.map((qualification, index) => (
+              <Link
+                key={index}
+                href={`/job?findby=${qualification}`}
+                className="flex cursor-pointer justify-center items-center text-white font-semibold text-center h-16 rounded-md shadow-md hover:scale-105 transition-transform"
+                style={{ backgroundColor: generateRandomColor() }}
+              >
+                {qualification}
+              </Link>
+            ))}
+          </div>
         </div>
-      </div>
-      <div className="text-center mt-12">
-        <h1 className="text-2xl font-bold mb-4">Jobs By Location</h1>
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto">
-          {locations?.map((location, index) => (
-            <Link
-              key={index}
-              href={`/job?findby=${location}`}
-              className="flex cursor-pointer justify-center items-center bg-green-500 text-white font-semibold text-center h-16 rounded-md shadow-md hover:scale-105 transition-transform"
-              style={{ backgroundColor: generateRandomColor() }}
-            >
-              {location}
-            </Link>
-          ))}
+        <div className="text-center mt-12">
+          <h1 className="text-2xl font-bold mb-4">Jobs By Location</h1>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto">
+            {locations?.map((location, index) => (
+              <Link
+                key={index}
+                href={`/job?findby=${location}`}
+                className="flex cursor-pointer justify-center items-center bg-green-500 text-white font-semibold text-center h-16 rounded-md shadow-md hover:scale-105 transition-transform"
+                style={{ backgroundColor: generateRandomColor() }}
+              >
+                {location}
+              </Link>
+            ))}
+          </div>
         </div>
       </div>
     </div>

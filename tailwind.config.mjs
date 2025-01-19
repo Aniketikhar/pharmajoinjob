@@ -11,7 +11,21 @@ export default {
         background: "var(--background)",
         foreground: "var(--foreground)",
       },
-    },
+      keyframes: {
+        blink: {
+          '0%, 100%': { borderColor: 'transparent' },
+          '50%': { borderColor: 'blue' },
+        },
+        blinkGreen: {
+          '0%, 100%': { borderColor: 'transparent' },
+          '50%': { borderColor: 'green' },
+        },
+      },
+      animation: {
+        'blink-blue': 'blink 1s infinite',
+        'blink-green': 'blinkGreen 1s infinite',
+      },
+    }
   },
   plugins: [],
 };
