@@ -39,7 +39,7 @@ export default function JobCard({ job }) {
         </div>
         <div
           className="flex items-center flex-shrink-0 flex-wrap
-         text-xs md:text-sm text-gray-500 gap-4 md:gap-4"
+         text-sm md:text-md text-gray-500 gap-4 md:gap-4"
         >
           <span className="flex items-center">
             <FaLocationDot className="inline" />

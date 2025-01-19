@@ -1,4 +1,5 @@
 import JobsSection from "@/Components/JobsSection";
+import SocialMediaBar from "@/Components/SocialMediaBar";
 import WrapPopUp from "@/Components/WrapPopUp";
 import React from "react";
 
@@ -36,6 +37,7 @@ const page = async ({ searchParams }) => {
   return (
     <>
       <WrapPopUp />
+      <SocialMediaBar />
       <JobsSection jobs={jobs} />
     </>
   );

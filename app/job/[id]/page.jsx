@@ -1,5 +1,6 @@
 import FullJob from "@/Components/FullJob";
 import Sidebar from "@/Components/Sidebar";
+import SocialMediaBar from "@/Components/SocialMediaBar";
 import WrapPopUp from "@/Components/WrapPopUp";
 import React from "react";
 
@@ -38,6 +39,7 @@ const page = async ({ params }) => {
   return (
     <>
       <WrapPopUp />
+      <SocialMediaBar />
       <div className="container mx-auto min-h-screen">
         <div className="flex flex-col md:flex-row gap-3 my-3 md:my-8">
           {/* Left Sidebar */}

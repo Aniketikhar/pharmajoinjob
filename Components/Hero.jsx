@@ -7,6 +7,7 @@ import { assets } from "@/Assets/assets";
 import ConsultationSection from "./Cunsultancy";
 import JobsByQualAndLoc from "./JobsByQualAndLoc";
 import Link from "next/link";
+import SocialMediaBar from "./SocialMediaBar";
 
 
 
@@ -104,6 +105,7 @@ const Hero = ({ jobs }) => {
           </div>
         </div>
         <JobsSection jobs={filteredJobs} />
+        <SocialMediaBar />
         <ConsultationSection />
         <JobsByQualAndLoc />
       </section>
