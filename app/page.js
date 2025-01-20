@@ -6,9 +6,6 @@ import WrapPopUp from "@/Components/WrapPopUp";
 export default async function Home() {
   let jobs = await fetchAllJobs();
 
-  
-  
-
   return (
     <>
         <WrapPopUp />

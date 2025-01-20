@@ -73,7 +73,7 @@ export default function JobCard({ job }) {
               className="rounded-2xl text-white bg-purple-400 px-2 py-1 text-sm"
               key={index}
             >
-              {tag}
+              <span>{tag}</span>
             </div>
           ))}
         </div>
@@ -84,7 +84,7 @@ export default function JobCard({ job }) {
         </button>
         <Link
           href={`/job/${job?._id}`}
-          className="bg-blue-500 rounded-sm px-3 py-1 border-2 border-blue-500 w-[110px] text-white hover:bg-gray-200 hover:border-2 hover:text-blue-500"
+          className="bg-blue-500 rounded-sm px-3 py-1 border-2 border-blue-500 w-[120px] text-white hover:bg-gray-200 hover:border-2 hover:text-blue-500"
         >
           Apply Now
         </Link>

@@ -10,6 +10,8 @@ import banner1 from "@/Assets/banner1.webp";
 import banner2 from "@/Assets/banner2.webp";
 import aboutus from "@/Assets/aboutus.png";
 import consultbg from "@/Assets/consultantbg.png";
+import whatsbanner from "@/Assets/whatsbanner.png";
+import telebanner from "@/Assets/telebanner.png";
 
 export const assets = {
   pharmalogo,
@@ -23,7 +25,9 @@ export const assets = {
   banner1,
   banner2,
   aboutus,
-  consultbg
+  consultbg,
+  whatsbanner,
+  telebanner
 };
 
 export const pages = [

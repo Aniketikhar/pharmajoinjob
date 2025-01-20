@@ -31,17 +31,20 @@ const Hero = ({ jobs }) => {
 
 
   const filterJobs = (position, location) => {
-    const lowerPosition = position?.toLowerCase();
-    const lowerLocation = location?.toLowerCase();
-
-    const result = jobs?.filter(
-      (job) =>
+    const lowerPosition = position?.toLowerCase() || "";
+    const lowerLocation = location?.toLowerCase() || "";
+  
+    const result = jobs?.filter((job) => {
+      const matchesPosition =
         job.title?.toLowerCase().includes(lowerPosition) ||
         job.jobRole?.toLowerCase().includes(lowerPosition) ||
-        job.company?.toLowerCase().includes(lowerPosition) &&
-        job.location?.toLowerCase().includes(lowerLocation)
-    );
-
+        job.company?.toLowerCase().includes(lowerPosition);
+  
+      const matchesLocation = job.location?.toLowerCase().includes(lowerLocation);
+  
+      return matchesPosition && matchesLocation;
+    });
+  
     setFilteredJobs(result);
   };
 
@@ -78,7 +81,7 @@ const Hero = ({ jobs }) => {
           }}
         >
           <div className="container mx-auto text-white">
-            <h1 className="font-bold text-3xl pt-10 pb-5">
+            <h1 className=" text-3xl pt-10 pb-5">
               Get a New Job with PharmaJoin Right Now!
             </h1>
             <p>
@@ -91,7 +94,7 @@ const Hero = ({ jobs }) => {
             </p>
           </div>
           <div className="py-10 container mx-auto">
-            <Searchbar position={position} setPosition={setPosition} location={location} setLocation={setLocation} />
+            <Searchbar filterJobs={filterJobs} position={position} setPosition={setPosition} location={location} setLocation={setLocation} />
           </div>
           <div className="container mx-auto pb-10 flex flex-wrap gap-2 md:gap-4 flex-shrink-0">
             {categories?.map((category, index) => (
@@ -109,7 +112,7 @@ const Hero = ({ jobs }) => {
         <SocialMediaBar />
         <JobsByQualAndLoc />
         <Jobpost />
-        <ConsultationSection />
+        {/* <ConsultationSection /> */}
       </section>
     </>
   );

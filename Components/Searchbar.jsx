@@ -4,13 +4,17 @@ import React, { useContext, useState } from "react";
 import { FaSearch } from "react-icons/fa";
 import { FaLocationDot } from "react-icons/fa6";
 
-const Searchbar = ({position, setPosition, location, setLocation}) => {
+const Searchbar = ({filterJobs, position, setPosition, location, setLocation}) => {
 
 
+  const handleSearch = (e) => {
+    e.preventDefault();
+    filterJobs(position, location);
+  }
 
   return (
     <div className="flex  items-center w-[100%]">
-      <form className="w-full max-w-4xl flex flex-col md:flex-row bg-white shadow-lg  overflow-hidden">
+      <form onSubmit={handleSearch} className="w-full max-w-4xl flex flex-col md:flex-row bg-white shadow-lg  overflow-hidden">
         {/* Position Input */}
         <div className="flex items-center flex-1 px-4 py-2">
           <span className="material-icons text-gray-500"><FaSearch className="text-xl" /></span>

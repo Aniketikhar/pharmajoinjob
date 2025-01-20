@@ -10,30 +10,25 @@ const page = async () => {
 
 
   const colors = [
-    "#FF6347", // Tomato
-    "#FFD700", // Gold
-    "#32CD32", // Lime Green
-    "#1E90FF", // Dodger Blue
-    "#8A2BE2", // Blue Violet
-    "#FF1493", // Deep Pink
-    "#FF4500", // Orange Red
-    "#00BFFF", // Deep Sky Blue
-    "#FFD700", // Gold
-    "#6A5ACD", // Slate Blue
-    "#20B2AA", // Light Sea Green
-    "#FF8C00", // Dark Orange
+    "#898b13",
+    "#00008B",
+    "#FF6700",
+    "#8B0000",
+    "#FF0000",
+    "#006400",
+    "#FF00FF",
+    "#007BFF",
+    "#1E90FF",
+    "#8A2BE2",
+    "#FF0000",
+    "#002147",
   ];
 
-  const getGradientWithShades = (color) => {
-    const lightColor = `${color}CC`; // Lighter shade
-    const darkColor = `${color}99`; // Darker shade
-    return `linear-gradient(0deg, ${lightColor}, ${color}, ${darkColor})`;
-  };
 
   // Function to get a random color and create a gradient with its shades
   const getRandomGradient = () => {
     const randomColor = colors[Math.floor(Math.random() * colors.length)];
-    return getGradientWithShades(randomColor);
+    return randomColor;
   };
 
   return (
@@ -44,7 +39,7 @@ const page = async () => {
           {/* category Listings */}
           <div className="w-full md:w-[70%]">
             <div className="flex justify-between items-center">
-              <h1 className="text-2xl font-bold text-gray-900">
+              <h1 className="text-2xl font-bold text-black">
                 {categories.length} Categories
               </h1>
             </div>
@@ -53,7 +48,7 @@ const page = async () => {
                 <Link key={index} href={`categories/category/${category._id}`}>
                   <div
                     style={{ background: getRandomGradient() }}
-                    className="text-gray-900 p-4 mb-3 rounded-md hover:bg-slate-500 shadow-md flex flex-col gap-3 border border-gray-200"
+                    className="text-white p-4 mb-3 rounded-md hover:bg-slate-500 shadow-md flex flex-col gap-3 border border-gray-200"
                   >
                     <h1 className="font-bold text-2xl ">{category.name}</h1>
                     <p>{category.description}</p>

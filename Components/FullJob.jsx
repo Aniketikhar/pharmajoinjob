@@ -72,10 +72,10 @@ export default function FullJob({ job }) {
         </p>
 
         <ul className="list-decimal ps-2 md:ps-6">
-          <li>Fill in the application form with all the necessary details.</li>
-          <li>Submit all relevant documents, if required.</li>
-          <li>Make sure that all the details entered are correct.</li>
-          <li>Submit the application form & wait for the companys revert.</li>
+          <li><p>Fill in the application form with all the necessary details.</p></li>
+          <li><p>Submit all relevant documents, if required.</p></li>
+          <li><p>Make sure that all the details entered are correct.</p></li>
+          <li><p>Submit the application form & wait for the companys revert.</p></li>
         </ul>
       </div>
       <div className="flex flex-row items-center mt-2 gap-2">
@@ -84,7 +84,7 @@ export default function FullJob({ job }) {
               className="rounded-2xl text-white bg-purple-400 px-2 py-1 text-sm"
               key={index}
             >
-              {tag}
+              <span>{tag}</span>
             </div>
           ))}
         </div>

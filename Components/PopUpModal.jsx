@@ -1,3 +1,5 @@
+import { assets } from "@/Assets/assets";
+import Image from "next/image";
 import Link from "next/link";
 import { Router } from "next/router";
 import React from "react";
@@ -24,7 +26,7 @@ const PopUpModal = ({ isVisible, onClose }) => {
     >
       <div
         style={{
-          background: "#fff",
+          background: "transparent",
           padding: "20px",
           borderRadius: "8px",
           width: "90%",
@@ -34,28 +36,50 @@ const PopUpModal = ({ isVisible, onClose }) => {
       >
         <div className="flex justify-end">
           <button onClick={onClose}>
-            <IoClose />
+            <IoClose className="text-white" />
           </button>
         </div>
-        <div className="bg-green-200 my-5 flex justify-between items-center p-2 rounded-md">
-          <div className="font-semibold text-xl text-green-900">
+        <div className=" my-2 flex justify-between items-center  rounded-md">
+          {/* <div className="font-semibold text-sm md:text-xl text-green-900">
             Join Our Whatsapp Group
           </div>
           <div>
             <Link href={"/aboutus"} className="bg-green-600 rounded-3xl px-3 py-1 text-white hover:scale-105 transition-all">
               Join Now
             </Link>
-          </div>
+          </div> */}
+          <Link href={"https://chat.whatsapp.com/Kbypm5EOrMiIKDnAG1G7vb"}>
+            <Image
+              src={assets.whatsbanner}
+              href={"/job"}
+              priority={true}
+              title="Join Us for latest Updates"
+              alt="whatsappbanner"
+              className="w-full transition-transform duration-300 group-hover:scale-125"
+            />
+          </Link>
         </div>
-        <div className="bg-blue-200 flex justify-between items-center p-2 rounded-md">
-          <div className="font-semibold text-xl text-blue-900">
+        <div className=" flex justify-between items-center  rounded-md">
+          {/* <div className="font-semibold text-sm md:text-xl text-blue-900">
             Join Our Telegram Group
           </div>
           <div>
-            <Link href={"/"} className="bg-blue-600 rounded-3xl px-3 py-1 text-white hover:scale-105 transition-all">
+            <Link
+              href={"/"}
+              className="bg-blue-600 rounded-3xl px-3 py-1 text-white hover:scale-105 transition-all"
+            >
               Join Now
             </Link>
-          </div>
+          </div> */}
+          <Link href={"https://t.me/pharmajoin"}>
+            <Image
+              src={assets.telebanner}
+              priority={true}
+              title="Join us for latest updates"
+              alt="telegrambanner"
+              className="w-full transition-transform duration-300 group-hover:scale-125"
+            />
+          </Link>
         </div>
       </div>
     </div>

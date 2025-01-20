@@ -4,15 +4,6 @@ import Header from "@/Components/Header";
 import { Suspense } from "react";
 import Footer from "@/Components/Footer";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
 
 export const metadata = {
   title: "Pharma Join",
@@ -24,7 +15,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`antialiased`}
       >
         <Header />
         <Suspense fallback={<div>Loading... suspense hoook</div>}>{children}</Suspense>
