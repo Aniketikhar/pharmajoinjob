@@ -108,10 +108,12 @@ const Hero = ({ jobs }) => {
             ))}
           </div>
         </div>
+        <SocialMediaBar />
         <JobsSection jobs={filteredJobs} />
         <SocialMediaBar />
         <JobsByQualAndLoc />
         <Jobpost />
+        <SocialMediaBar />
         {/* <ConsultationSection /> */}
       </section>
     </>

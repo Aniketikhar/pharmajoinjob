@@ -1,4 +1,5 @@
 import JobsSection from "@/Components/JobsSection";
+import SocialMediaBar from "@/Components/SocialMediaBar";
 import WrapPopUp from "@/Components/WrapPopUp";
 import { fetchCategoryById } from "@/Utils/utils";
 import React from "react";
@@ -19,7 +20,9 @@ const page = async ({ params }) => {
   return (
     <>
     <WrapPopUp />
+    <SocialMediaBar />
       <JobsSection jobs={job} />
+      <SocialMediaBar />
     </>
   );
 };

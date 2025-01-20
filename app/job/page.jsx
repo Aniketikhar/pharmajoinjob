@@ -39,6 +39,7 @@ const page = async ({ searchParams }) => {
       <WrapPopUp />
       <SocialMediaBar />
       <JobsSection jobs={jobs} />
+      <SocialMediaBar />
     </>
   );
 };

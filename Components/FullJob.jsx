@@ -28,7 +28,7 @@ export default function FullJob({ job }) {
         )}
       </div>
 
-      <div className="flex items-center text-sm text-gray-500 gap-4">
+      <div className="flex flex-shrink-0 gap-4 md:gap-6 flex-wrap items-center text-sm text-gray-500 ">
         <span className="flex items-center">
           <FaLocationDot className="inline" />
           &nbsp;{job.location}

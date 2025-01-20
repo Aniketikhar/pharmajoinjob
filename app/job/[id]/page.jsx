@@ -56,6 +56,7 @@ const page = async ({ params }) => {
           </div>
         </div>
       </div>
+      <SocialMediaBar />
     </>
   );
 };
