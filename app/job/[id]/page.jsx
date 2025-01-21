@@ -43,7 +43,10 @@ const page = async ({ params }) => {
       <div className="container mx-auto min-h-screen">
         <div className="flex flex-col md:flex-row gap-3 my-3 md:my-8">
           {/* Left Sidebar */}
-          <div className=" w-[17%] hidden lg:block">left sidebar component</div>
+          <div className=" w-[17%] hidden lg:block">
+
+            
+          </div>
 
           {/* Job Details */}
           <div className=" w-full md:w-[77%] lg:w-[57%]">

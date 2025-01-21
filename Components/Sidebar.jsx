@@ -7,8 +7,7 @@ function Sidebar() {
       <div className="bg-white p-4 rounded-sm shadow-md border border-gray-200">
         <h3 className="text-lg font-medium mb-3">Email me for jobs</h3>
         <p className="text-sm text-gray-600 mb-3">
-          Ut esse eiusmod aute. Sit enim labore dolore. Aute ea fugiat commodo
-          ea.
+        Passionate developer ready to deliver impactful solutions and innovate.
         </p>
         <form>
           <input

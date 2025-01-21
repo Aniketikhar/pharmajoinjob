@@ -1,5 +1,5 @@
 import React, { memo } from 'react'
-import { FaFacebook, FaInstagram, FaTwitter, FaWhatsapp, FaYoutube } from 'react-icons/fa6';
+import { FaFacebook, FaInstagram, FaTelegram, FaTwitter, FaWhatsapp, FaYoutube } from 'react-icons/fa6';
 
 const FollowUs = memo(() => {
     const socialLinks = [
@@ -12,6 +12,11 @@ const FollowUs = memo(() => {
           name: "Twitter X",
           color: "bg-black",
           icon: <FaTwitter className="text-white text-lg" />,
+        },
+        {
+          name: "Telegram",
+          color: "bg-blue-500",
+          icon: <FaTelegram className="text-white text-lg" />,
         },
         {
           name: "Instagram",
