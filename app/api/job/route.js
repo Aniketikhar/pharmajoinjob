@@ -12,12 +12,12 @@ const LoadDB = async () => {
 LoadDB();
 
 export async function GET(request) {
-  const JobID = request.nextUrl.searchParams.get("id");
+  const slug = request.nextUrl.searchParams.get("job");
   const findby = request.nextUrl.searchParams.get("findby");
 
   try {
-    if (JobID) {
-      const job = await JobModel.findById(JobID);
+    if (slug) {
+      const job = await JobModel.find({slug});
       if (!job) {
         return NextResponse.json(
           { success: false, msg: "Job not found" },

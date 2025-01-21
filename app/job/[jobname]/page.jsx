@@ -4,11 +4,11 @@ import SocialMediaBar from "@/Components/SocialMediaBar";
 import WrapPopUp from "@/Components/WrapPopUp";
 
 // Server-side fetching function in the App Directory
-const fetchJob = async (id) => {
+const fetchJob = async (jobname) => {
   let job = null;
 
   try {
-    const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/job?id=${id}`, {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/job?job=${jobname}`, {
       cache: "no-store", // Avoid caching to ensure fresh data
     });
 
@@ -17,7 +17,8 @@ const fetchJob = async (id) => {
     }
 
     const data = await response.json();
-    job = data.job;
+    console.log(data)
+    job = data.job[0];
   } catch (error) {
     console.error("Error fetching job:", error.message);
   }
@@ -26,11 +27,11 @@ const fetchJob = async (id) => {
 };
 
 export async function generateMetadata({ params }) {
-  const { id } = params; 
-  const job = await fetchJob(id);
+  const { jobname } = params; 
+  const job = await fetchJob(jobname);
 
   return {
-    title: job.title,
+    title: job?.title || "job page",
     description: job.jobDescription,
     openGraph: {
       title: job.title,
@@ -47,8 +48,9 @@ export async function generateMetadata({ params }) {
 
 // Page Component
 const Page = async ({ params }) => {
-  const { id } = params; // Get the job id from URL
-  const job = await fetchJob(id);
+  const { jobname } = await params;
+  console.log(jobname)
+  const job = await fetchJob(jobname);
 
   if (!job) {
     return (

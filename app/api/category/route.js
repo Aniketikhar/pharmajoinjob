@@ -2,6 +2,7 @@ import ConnectDB from "@/lib/config/db";
 import { NextResponse } from "next/server";
 import CategoryModel from "@/lib/models/CategoryModel";
 import JobModel from "@/lib/models/JobModel";
+import slugify from "slugify";
 
 const LoadDB = async () => {
   await ConnectDB();
@@ -56,7 +57,18 @@ export async function POST(request) {
     // Parse JSON body from the request
     const body = await request.json();
 
+    let baseSlug = slugify(body.name, { lower: true, strict: true });
+    let slug = baseSlug;
+    let count = 1;
+  
+    // Ensure the slug is unique
+    while (await CategoryModel.findOne({ slug })) {
+      slug = `${baseSlug}-${count}`;
+      count++;
+    }
+
     const category = {
+      slug: slug,
       name: body.name,
       description: body.description,
     };

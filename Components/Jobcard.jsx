@@ -83,7 +83,7 @@ export default function JobCard({ job }) {
           <FaShareAlt />
         </button>
         <Link
-          href={`/job/${job?._id}`}
+          href={`/job/${job?.slug}`}
           className="bg-blue-500 rounded-sm px-3 py-1 border-2 border-blue-500 w-[120px] text-white hover:bg-gray-200 hover:border-2 hover:text-blue-500"
         >
           Apply Now
