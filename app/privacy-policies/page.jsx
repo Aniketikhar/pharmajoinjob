@@ -1,5 +1,12 @@
 import React from "react";
 
+
+export const metadata = {
+  title: "Privacy Policies | Pharma Join",
+  description:
+    "A Pharma Join is a specialized platform designed to connect pharmaceutical professionals with job opportunities in the healthcare and life sciences sectors. It serves as a bridge between employers in the pharmaceutical industry and skilled candidates, streamlining the hiring process and enabling career growth.",
+};
+
 const AboutUs = () => {
   const definitions = [
     {

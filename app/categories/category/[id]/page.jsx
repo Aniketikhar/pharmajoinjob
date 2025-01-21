@@ -3,6 +3,7 @@ import SocialMediaBar from "@/Components/SocialMediaBar";
 import WrapPopUp from "@/Components/WrapPopUp";
 import { fetchCategoryById } from "@/Utils/utils";
 import React from "react";
+import Head from "next/head";
 
 const page = async ({ params }) => {
   const { id } =await params;
@@ -19,6 +20,11 @@ const page = async ({ params }) => {
   }
   return (
     <>
+    <Head>
+        <title>category page</title>
+        <meta name="description" content="hey therr" />
+        <meta name="keywords" content="job, search" />
+      </Head>
     <WrapPopUp />
     <SocialMediaBar />
       <JobsSection jobs={job} />

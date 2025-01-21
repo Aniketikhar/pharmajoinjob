@@ -3,6 +3,7 @@ import { NextResponse } from "next/server";
 import JobModel from "@/lib/models/JobModel";
 import CategoryModel from "@/lib/models/CategoryModel";
 import mongoose from "mongoose";
+import slugify from "slugify";
 
 const LoadDB = async () => {
   await ConnectDB();
@@ -58,6 +59,7 @@ export async function GET(request) {
 export async function POST(request) {
   const body = await request.json();
   const categoryId = body.categoryId;
+  const jobTitle = body.jobTitle;
 
   if (!categoryId || !mongoose.Types.ObjectId.isValid(categoryId)) {
     return NextResponse.json({
@@ -72,6 +74,16 @@ export async function POST(request) {
       success: false,
       msg: "Invalid category ID",
     });
+  }
+
+  let baseSlug = slugify(jobTitle, { lower: true, strict: true });
+  let slug = baseSlug;
+  let count = 1;
+
+  // Ensure the slug is unique
+  while (await JobModel.findOne({ slug })) {
+    slug = `${baseSlug}-${count}`;
+    count++;
   }
 
   const job = {
@@ -90,6 +102,7 @@ export async function POST(request) {
     applyLink: body.applyLink,
     postBy: body.postBy,
     category: categoryId,
+    slug: slug,
   };
 
   await JobModel.create(job);

@@ -2,6 +2,12 @@ import { assets } from "@/Assets/assets";
 import React from "react";
 import about from "@/Assets/aboutus.png"
 
+export const metadata = {
+  title: "About Us | Pharma Join",
+  description:
+    "A Pharma Join is a specialized platform designed to connect pharmaceutical professionals with job opportunities in the healthcare and life sciences sectors. It serves as a bridge between employers in the pharmaceutical industry and skilled candidates, streamlining the hiring process and enabling career growth.",
+};
+
 const page = () => {
   return (
     <div className="px-5 py-10 container mx-auto shadow-lg shadow-gray-500">
