@@ -15,7 +15,7 @@ export async function fetchCategoryById(id) {
   try{
   const response = await fetch(`${API_URL}/api/category?id=${id}`);
   const data = await response.json();
-  return data.job;
+  return data;
   }catch(err){
     console.log(err);
     return [];

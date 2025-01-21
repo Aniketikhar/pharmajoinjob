@@ -10,21 +10,46 @@ const LoadDB = async () => {
 LoadDB();
 
 export async function GET(request) {
-  const categryId = request.nextUrl.searchParams.get("id");
+  try {
+    const categryId = request.nextUrl.searchParams.get("id");
 
-  if(categryId){
-    const job = await JobModel.find({ category: categryId });
-    if (!job) {
-      return NextResponse.json({ success: false, msg: "Job not found" }, { status: 404 });
+    if (categryId) {
+      const jobs = await JobModel.find({ category: categryId });
+      const category = await CategoryModel.findById(categryId);
+
+      if (!category) {
+        return NextResponse.json(
+          { success: false, msg: "Category not found" },
+          { status: 404 }
+        );
+      }
+
+      if (!jobs.length) {
+        return NextResponse.json(
+          { success: false, msg: "Jobs not found" },
+          { status: 404 }
+        );
+      }
+
+      return NextResponse.json({
+        success: true,
+        msg: "Jobs are found",
+        jobs,
+        category,
+      });
+    } else {
+      const categories = await CategoryModel.find({});
+      return NextResponse.json({ success: true, msg: "All Jobs", categories });
     }
-  
-    return NextResponse.json({ success: true, msg: "this is Job", job });
-  }else{
-    const categories = await CategoryModel.find({});
-  
-  return NextResponse.json({ success: true, msg: "All Jobs", categories });
+  } catch (error) {
+    console.error("Error fetching data:", error);
+    return NextResponse.json(
+      { success: false, msg: "Internal Server Error" },
+      { status: 500 }
+    );
   }
 }
+
 
 export async function POST(request) {
   try {
@@ -53,65 +78,62 @@ export async function POST(request) {
   }
 }
 
-
 // Update an existing category
 export async function PUT(request) {
-    const body = await request.json();
-    const { id, name, description } = body;
-  
-    if (!id) {
-      return NextResponse.json({
-        success: false,
-        msg: "Category ID is required for update",
-      });
-    }
-  
-    const updatedCategory = await CategoryModel.findByIdAndUpdate(
-      id,
-      { name, description },
-      { new: true, runValidators: true } // Return the updated document
-    );
-  
-    if (!updatedCategory) {
-      return NextResponse.json({
-        success: false,
-        msg: "Category not found",
-      });
-    }
-  
+  const body = await request.json();
+  const { id, name, description } = body;
+
+  if (!id) {
     return NextResponse.json({
-      success: true,
-      msg: "Category updated successfully",
-      category: updatedCategory,
+      success: false,
+      msg: "Category ID is required for update",
     });
   }
-  
 
+  const updatedCategory = await CategoryModel.findByIdAndUpdate(
+    id,
+    { name, description },
+    { new: true, runValidators: true } // Return the updated document
+  );
+
+  if (!updatedCategory) {
+    return NextResponse.json({
+      success: false,
+      msg: "Category not found",
+    });
+  }
+
+  return NextResponse.json({
+    success: true,
+    msg: "Category updated successfully",
+    category: updatedCategory,
+  });
+}
 
 // Delete an existing category
 export async function DELETE(request) {
-    const { searchParams } = new URL(request.url);
-    const id = searchParams.get("id");
-  
-    if (!id) {
-      return NextResponse.json({
-        success: false,
-        msg: "Category ID is required for deletion",
-      });
-    }
-  
-    const deletedCategory = await CategoryModel.findByIdAndDelete(id);
-  
-    if (!deletedCategory) {
-      return NextResponse.json({
-        success: false,
-        msg: "Category not found",
-      });
-    }
-  
+  const { searchParams } = new URL(request.url);
+  const id = searchParams.get("id");
+
+  if (!id) {
     return NextResponse.json({
-      success: true,
-      msg: "Category deleted successfully",
-      category: deletedCategory,
+      success: false,
+      msg: "Category ID is required for deletion",
     });
   }
+
+  const deletedCategory = await CategoryModel.findByIdAndDelete(id);
+
+  if (!deletedCategory) {
+    return NextResponse.json({
+      success: false,
+      msg: "Category not found",
+    });
+  }
+
+  return NextResponse.json({
+    success: true,
+    msg: "Category deleted successfully",
+    category: deletedCategory,
+  });
+}

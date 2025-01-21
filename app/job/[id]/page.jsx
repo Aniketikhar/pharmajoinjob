@@ -25,6 +25,26 @@ const fetchJob = async (id) => {
   return job;
 };
 
+export async function generateMetadata({ params }) {
+  const { id } = params; 
+  const job = await fetchJob(id);
+
+  return {
+    title: job.title,
+    description: job.jobDescription,
+    openGraph: {
+      title: job.title,
+      description: job.jobDescription,
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: job.title,
+      description: job.jobDescription,
+    },
+  };
+
+}
+
 // Page Component
 const Page = async ({ params }) => {
   const { id } = params; // Get the job id from URL

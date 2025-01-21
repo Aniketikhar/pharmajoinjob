@@ -5,6 +5,21 @@ import { fetchCategory } from "@/Utils/utils";
 import Link from "next/link";
 import React from "react";
 
+export async function generateMetadata() {
+
+  return {
+    title: "Job Fields - PharmaJoin",
+    openGraph: {
+      title: "Job Fields - PharmaJoin",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: "Job Fields - PharmaJoin",
+    },
+  };
+
+}
+
 const page = async () => {
   let categories = await fetchCategory();
 
