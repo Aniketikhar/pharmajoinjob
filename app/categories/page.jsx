@@ -55,17 +55,17 @@ const page = async () => {
           <div className="w-full md:w-[70%]">
             <div className="flex justify-between items-center">
               <h1 className="text-2xl font-bold text-black">
-                {categories.length} Categories
+                {categories?.length} Categories
               </h1>
             </div>
             <div className="py-3">
               {categories?.map((category, index) => (
-                <Link key={index} href={`categories/category/${category._id}`}>
+                <Link key={index} href={`categories/category/${category?._id}`}>
                   <div
                     style={{ background: getRandomGradient() }}
                     className="text-white p-4 mb-3 rounded-md hover:bg-slate-500 shadow-md flex flex-col gap-3 border border-gray-200"
                   >
-                    <h1 className="font-bold text-2xl ">{category.name}</h1>
+                    <h1 className="font-bold text-2xl ">{category?.name}</h1>
                     <p>{category.description}</p>
                   </div>
                 </Link>

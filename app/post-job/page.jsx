@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
-import { toast } from "react-toastify";
+import { toast, ToastContainer } from "react-toastify";
 import dynamic from "next/dynamic";
 
 // Dynamically import DescriptionBox
@@ -20,8 +20,10 @@ const PostJobForm = () => {
     reset
   } = useForm();
   const [categories, setCategories] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   const createJob = async (data) => {
+    setLoading(true);
 
     const formattedTags = Array.isArray(data?.tags)
       ? data?.tags.map((tag) => tag.trim()) // Ensure tags are trimmed
@@ -38,9 +40,11 @@ const PostJobForm = () => {
     const datar = await response.json();
     if (datar.success) {
       toast.success("Job created successfully");
+      setLoading(false);
       reset();
     } else {
       toast.error("Failed to create Job");
+      setLoading(false);
     }
   };
 
@@ -58,6 +62,7 @@ const PostJobForm = () => {
 
   return (
     <div className="container mx-auto p-6 bg-white shadow-md rounded-md">
+      <ToastContainer />
       <h1 className="text-2xl font-bold mb-4">Post a Job</h1>
       <p className="text-gray-600 mb-6">
         Find the best talent for your company
@@ -304,7 +309,7 @@ const PostJobForm = () => {
             type="submit"
             className="w-full bg-indigo-600 text-white py-2 px-4 rounded-md hover:bg-indigo-700"
           >
-            Post Job
+            {loading ? "Posting...": "Post Job"} 
           </button>
         </div>
       </form>
