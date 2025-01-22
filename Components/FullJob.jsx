@@ -124,7 +124,7 @@ export default function FullJob({ job }) {
                 Join Our WhatsApp Group
               </td>
               <td className="border border-gray-300 px-4 py-2 text-blue-500 text-right">
-                <a href="#" className="hover:underline">
+                <a href="https://chat.whatsapp.com/Kbypm5EOrMiIKDnAG1G7vb" className="hover:underline">
                   JOIN NOW
                 </a>
               </td>
@@ -134,7 +134,7 @@ export default function FullJob({ job }) {
                 Join Our Telegram Channel
               </td>
               <td className="border border-gray-300 px-4 py-2 text-blue-500 text-right">
-                <a href="#" className="hover:underline">
+                <a href="https://t.me/pharmajoin" className="hover:underline">
                   JOIN NOW
                 </a>
               </td>

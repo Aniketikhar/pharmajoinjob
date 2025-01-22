@@ -7,31 +7,31 @@ const FollowUs = memo(() => {
           name: "Facebook",
           color: "bg-blue-600",
           icon: <FaFacebook className="text-white text-lg" />,
+          url: "https://chat.whatsapp.com/Kbypm5EOrMiIKDnAG1G7vb"
         },
         {
           name: "Twitter X",
           color: "bg-black",
           icon: <FaTwitter className="text-white text-lg" />,
+          url: "https://chat.whatsapp.com/Kbypm5EOrMiIKDnAG1G7vb"
         },
         {
           name: "Telegram",
           color: "bg-blue-500",
           icon: <FaTelegram className="text-white text-lg" />,
+          url: "https://t.me/pharmajoin"
         },
         {
           name: "Instagram",
           color: "bg-pink-500",
           icon: <FaInstagram className="text-white text-lg" />,
-        },
-        {
-          name: "YouTube",
-          color: "bg-red-600",
-          icon: <FaYoutube className="text-white text-lg" />,
+          url: "https://chat.whatsapp.com/Kbypm5EOrMiIKDnAG1G7vb"
         },
         {
           name: "WhatsApp",
           color: "bg-green-500",
           icon: <FaWhatsapp className="text-white text-lg" />,
+          url: "https://chat.whatsapp.com/Kbypm5EOrMiIKDnAG1G7vb"
         },
       ];
   return (

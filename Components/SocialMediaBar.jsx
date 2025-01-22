@@ -1,5 +1,6 @@
 import { assets } from "@/Assets/assets";
 import Image from "next/image";
+import Link from "next/link";
 import React, { memo } from "react";
 
 const SocialMediaBar = memo(() => {
@@ -18,9 +19,9 @@ const SocialMediaBar = memo(() => {
             />{" "}
             <span> WhatsApp Group</span>
           </div>
-          <button className="px-4 py-2 text-white bg-green-500 rounded hover:bg-green-600">
+          <Link href={"https://chat.whatsapp.com/Kbypm5EOrMiIKDnAG1G7vb"} className="px-4 py-2 text-white bg-green-500 rounded hover:bg-green-600">
             Join Now
-          </button>
+          </Link>
         </div>
         {/* Telegram Group */}
         <div className="flex justify-between items-center p-1 bg-blue-50 border-2 border-blue-700 rounded-lg animate-blink-blue">
@@ -33,9 +34,9 @@ const SocialMediaBar = memo(() => {
             />
             <span> Telegram Group</span>
           </div>
-          <button className="px-4 py-2 text-white bg-blue-700 rounded hover:bg-blue-800">
+          <Link href={"https://t.me/pharmajoin"} className="px-4 py-2 text-white bg-blue-700 rounded hover:bg-blue-800">
             Join Now
-          </button>
+          </Link>
         </div>
       </div>
     </div>

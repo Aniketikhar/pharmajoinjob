@@ -53,7 +53,7 @@ const Header = () => {
               </a>
             </li>
             <li className="group">
-              <a href="">
+              <a href="https://chat.whatsapp.com/Kbypm5EOrMiIKDnAG1G7vb">
                 <Image
                   src={assets.facebook}
                   priority={true}
@@ -65,7 +65,7 @@ const Header = () => {
               </a>
             </li>
             <li className="group">
-              <a href="">
+              <a href="https://chat.whatsapp.com/Kbypm5EOrMiIKDnAG1G7vb">
                 <Image
                   src={assets.instagram}
                   priority={true}
@@ -200,7 +200,7 @@ const Header = () => {
           </li> */}
           <li className="icon-content">
             <a
-              href="https://youtube.com/"
+              href="https://chat.whatsapp.com/Kbypm5EOrMiIKDnAG1G7vb"
               aria-label="Whatsapp"
               data-social="Whatsapp"
             >
@@ -210,7 +210,7 @@ const Header = () => {
           </li>
           <li className="icon-content">
             <a
-              href="https://www.github.com/"
+              href="https://t.me/pharmajoin"
               aria-label="Telegram"
               data-social="Telegram"
             >

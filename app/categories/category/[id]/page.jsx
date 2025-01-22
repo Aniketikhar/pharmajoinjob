@@ -31,7 +31,7 @@ const page = async ({ params }) => {
   // Handle case where job data is not available
   if (!data.jobs) {
     return (
-      <div className="container mx-auto">
+      <div className="container mx-auto min-h-screen">
         <h1 className="text-center text-2xl text-red-600">Job not found</h1>
       </div>
     );
