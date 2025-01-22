@@ -21,14 +21,14 @@ export async function GET(request) {
       if (!category) {
         return NextResponse.json(
           { success: false, msg: "Category not found" },
-          { status: 404 }
+          { status: 200 }
         );
       }
 
       if (!jobs.length) {
         return NextResponse.json(
           { success: false, msg: "Jobs not found" },
-          { status: 404 }
+          { status: 200 }
         );
       }
 

@@ -21,7 +21,7 @@ export async function GET(request) {
       if (!job) {
         return NextResponse.json(
           { success: false, msg: "Job not found" },
-          { status: 404 }
+          { status: 200 }
         );
       }
 
@@ -37,7 +37,7 @@ export async function GET(request) {
       if (jobs.length === 0) {
         return NextResponse.json(
           { success: false, msg: "No jobs found matching the criteria" },
-          { status: 404 }
+          { status: 200 }
         );
       }
 
