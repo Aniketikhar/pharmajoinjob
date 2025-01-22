@@ -21,10 +21,38 @@ const DescriptionBox = ({ setValue, register, fieldName, errors }) => {
             placeholder: "Write your styled description here...",
             modules: {
               toolbar: [
-                [{ header: [1, 2, false] }],
+                // Header dropdown
+                [{ header: [1, 2, 3, 4, 5, 6, false] }],
+
+                // Font style dropdown
+                [{ font: [] }],
+
+                // Text styling
                 ["bold", "italic", "underline", "strike"],
+
+                // Subscript and superscript
+                [{ script: "sub" }, { script: "super" }],
+
+                // Lists
                 [{ list: "ordered" }, { list: "bullet" }],
-                ["link", "image"],
+
+                // Indentation
+                [{ indent: "-1" }, { indent: "+1" }],
+
+                // Alignment options
+                [{ align: [] }],
+
+                // Blockquote and code block
+                ["blockquote", "code-block"],
+
+                // Links, images, and videos
+                ["link", "image", "video"],
+
+                // Text color and background color
+                [{ color: [] }, { background: [] }],
+
+                // Clear formatting
+                ["clean"],
               ],
             },
           });

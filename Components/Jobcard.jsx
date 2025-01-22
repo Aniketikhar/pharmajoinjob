@@ -15,7 +15,7 @@ export default function JobCard({ job }) {
         await navigator.share({
           title: "Check out this page!",
           text: "I found this page interesting. Have a look!",
-          url: window.location.href,
+          url: window.location.href + "/job/" + job?.slug,
         });
         console.log("Content shared successfully");
       } catch (error) {
@@ -42,11 +42,11 @@ export default function JobCard({ job }) {
           className="flex items-center flex-shrink-0 flex-wrap
          text-sm md:text-md text-gray-500 gap-4 md:gap-4"
         >
-          <span className="flex items-center">
+          {job?.location && <span className="flex items-center">
             <FaLocationDot className="inline" />
             &nbsp;{job.location}
-          </span>
-          <span className="flex items-center">
+          </span>}
+          {job?.workMode && <span className="flex items-center">
             <MdHomeWork className="inline" />
             &nbsp;
             {job.workMode == "Work from Office"
@@ -54,22 +54,22 @@ export default function JobCard({ job }) {
               : job.workMode == "Work from Home"
               ? "WFH"
               : job.workMode}
-          </span>
-          <span className="flex items-center">
+          </span>}
+          {job?.jobType && <span className="flex items-center">
             <IoTimeSharp className="inline" />
             &nbsp;{job.jobType}
-          </span>
-          <span className="flex items-center">
+          </span>}
+          {job?.salary && <span className="flex items-center">
             <PiMoneyWavyFill className="inline" />
             &nbsp;{job.salary}
-          </span>
-          <span className="flex items-center">
+          </span>}
+         {job?.jobLevel && <span className="flex items-center">
             <FaUserGraduate className="inline" />
             &nbsp;{job.jobLevel}
-          </span>
+          </span>}
         </div>
         <div className="flex flex-row flex-wrap items-center mt-2 gap-2">
-          {job?.tags?.map((tag, index) => (
+          {job?.tags?.slice(0,5).map((tag, index) => (
             <div
               className="rounded-2xl text-white bg-purple-400 px-2 py-1 text-sm"
               key={index}

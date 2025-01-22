@@ -41,7 +41,7 @@ const FollowUs = memo(() => {
         {socialLinks?.map((link, index) => (
           <div
             key={index}
-            className={`flex items-center m-2 space-x-4 py-3 px-4 rounded-full ${link.color} shadow-lg hover:scale-105 transition-transform`}
+            className={`flex items-center m-2 cursor-pointer space-x-4 py-3 px-4 rounded-full ${link.color} shadow-lg hover:scale-105 transition-transform`}
           >
             {link.icon}
             <span className="text-white font-medium">{link.name}</span>

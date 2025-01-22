@@ -27,7 +27,7 @@ function Sidebar() {
       const data = await response.json();
       if (data.success) {
         console.log('Subscription added successfully:', data.subscription);
-        toast.success("Thanks for subscription");
+        toast.success("Thank you for subscribing! Job updates will be sent to your inbox.");
         setEmail('');
         setLoading(false);
         return data.subscription;
@@ -47,7 +47,7 @@ function Sidebar() {
       <div className="bg-white p-4 rounded-sm shadow-md border border-gray-200">
         <h3 className="text-lg font-medium mb-3">Email me for jobs</h3>
         <p className="text-sm text-gray-600 mb-3">
-        Passionate developer ready to deliver impactful solutions and innovate.
+        Share your email address, and we will send regular updates about job opportunities and relevant openings directly to your inbox.
         </p>
         <form onSubmit={addSubscription}>
           <input
@@ -55,9 +55,9 @@ function Sidebar() {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             placeholder="name@mail.com"
-            className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm mb-3 outline-none"
+            className="w-full border border-gray-300 rounded-sm px-3 py-2 text-sm mb-3 outline-none"
           />
-          <button type="submit" className="w-full bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition">
+          <button type="submit" className="w-full bg-orange-600 text-white px-4 py-2 rounded-sm hover:bg-blue-600 transition">
             { loading ? "loading..." : "Subscribe" }
           </button>
         </form>
