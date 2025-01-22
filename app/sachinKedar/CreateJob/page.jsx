@@ -20,8 +20,10 @@ const PostJobForm = () => {
     reset
   } = useForm();
   const [categories, setCategories] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   const createJob = async (data) => {
+    setLoading(true);
     const formattedTags = Array.isArray(data?.tags)
       ? data?.tags.map((tag) => tag.trim()) // Ensure tags are trimmed
       : data?.tags.split(",").map((tag) => tag.trim());
@@ -37,9 +39,11 @@ const PostJobForm = () => {
     const datar = await response.json();
     if (datar.success) {
       toast.success("Job created successfully");
+      setLoading(false);
       reset();
     } else {
       toast.error("Failed to create Job");
+      setLoading(false);
     }
   };
 
@@ -304,7 +308,7 @@ const PostJobForm = () => {
             type="submit"
             className="w-full bg-indigo-600 text-white py-2 px-4 rounded-md hover:bg-indigo-700"
           >
-            Post Job
+            {loading ? "Posting..." : "Post Job"}
           </button>
         </div>
       </form>

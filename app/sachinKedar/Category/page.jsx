@@ -8,12 +8,15 @@ const Page = () => {
   const [categories, setCategories] = useState([]);
   const [categoryName, setCategoryName] = useState([]);
   const [categoryDescription, setCategoryDescription] = useState("");
+  const [loading, setLoading] = useState(false);
 
   
   // Fetch categories function
   const fetchCategories = async () => {
+    setLoading(true);
     const response = await fetchCategory();
     setCategories(response);
+    setLoading(false);
   };
   
   // Fetch categories on component mount
@@ -23,6 +26,7 @@ const Page = () => {
   // Create new category function
   const createCategory = async (e) => {
     e.preventDefault();
+    setLoading(true);
     const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/category`, {
       method: "POST",
       headers: {
@@ -38,10 +42,12 @@ const Page = () => {
     if (data.success) {
       toast.success("Category created successfully");
       setCategoryName("");
+      setLoading(false);
       setCategoryDescription("");
       fetchCategories(); // Refetch categories after creation
     } else {
       toast.error("Failed to create category");
+      setLoading(false);
     }
   };
 
@@ -123,7 +129,7 @@ const Page = () => {
               type="submit"
               className="bg-blue-500 text-white p-2 rounded-md"
             >
-              Create Category
+              {loading ? "Creating..." : "Create Category"}
             </button>
           </div>
         </form>

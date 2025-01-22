@@ -22,22 +22,22 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
       </div>
       {/* Sidebar Links */}
       <ul className="mt-8 space-y-2">
-        <Link href="/admin/Category">
+        <Link href="/sachinKedar/Category">
           <li className="block px-4 py-2 hover:bg-gray-600 rounded">
             {isOpen ? "Categories" : "C"}
           </li>
         </Link>
-        <Link href="/admin/CreateJob">
+        <Link href="/sachinKedar/CreateJob">
           <li className="block px-4 py-2 hover:bg-gray-600 rounded">
             {isOpen ? "Create Job" : "CJ"}
           </li>
         </Link>
-        <Link href="/admin/JobList">
+        <Link href="/sachinKedar/JobList">
           <li className="block px-4 py-2 hover:bg-gray-600 rounded">
             {isOpen ? "List Jobs" : "LJ"}
           </li>
         </Link>
-        <Link href="/admin/Subscriptions">
+        <Link href="/sachinKedar/Subscriptions">
           <li className="block px-4 py-2 hover:bg-gray-600 rounded">
             {isOpen ? "Subscription" : "S"}
           </li>

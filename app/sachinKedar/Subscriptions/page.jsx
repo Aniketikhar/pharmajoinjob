@@ -1,9 +1,71 @@
-import React from 'react'
+"use client";
+
+import React, { useEffect, useState } from "react";
+import { toast } from "react-toastify";
 
 const page = () => {
-  return (
-    <div>subscription</div>
-  )
-}
+  const [emails, setEmails] = useState([]);
 
-export default page
+  // Fetch jobs function
+  const fetchEmails = async () => {
+    const response = await fetch("/api/subscription");
+    const data = await response.json();
+    setEmails(data.subscriptions);
+  };
+
+  // Fetch categories on component mount
+  useEffect(() => {
+    fetchEmails();
+  }, []);
+
+  const deleteEmail = async (id) => {
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_API_URL}/api/subscription?id=${id}`,
+      {
+        method: "DELETE",
+      }
+    );
+
+    const data = await response.json();
+    if (data.success) {
+      toast.success("Email deleted successfully");
+      fetchEmails();
+    } else {
+      toast.error("Failed to delete Job");
+    }
+  };
+
+  return (
+    <div className="mx-auto p-6 bg-white shadow-md rounded-md">
+      <h2 className="font-bold text-xl ">Job List</h2>
+      <div className="flex flex-col mt-4 gap-4">
+        {emails?.map((email, index) => (
+          <div
+            key={index}
+            className="p-4 rounded-md border bg-slate-100 flex justify-between items-center"
+          >
+            <div>
+              <div className="font-semibold text-lg">{email.email}</div>
+            </div>
+            <div>
+              <button
+                onClick={() => {
+                  if (
+                    confirm("Are you sure you want to delete this Email?")
+                  ) {
+                    deleteEmail(email._id);
+                  }
+                }}
+                className="bg-red-500 text-white p-2 rounded-md ml-2"
+              >
+                Delete
+              </button>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+};
+
+export default page;
