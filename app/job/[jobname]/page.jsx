@@ -8,16 +8,18 @@ const fetchJob = async (jobname) => {
   let job = null;
 
   try {
-    const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/job?job=${jobname}`, {
-      cache: "no-store", // Avoid caching to ensure fresh data
-    });
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_API_URL}/api/job?job=${jobname}`,
+      {
+        cache: "no-store", // Avoid caching to ensure fresh data
+      }
+    );
 
     if (!response.ok) {
       throw new Error("Failed to fetch job details");
     }
 
     const data = await response.json();
-    console.log(data)
     job = data.job[0];
   } catch (error) {
     console.error("Error fetching job:", error.message);
@@ -27,7 +29,7 @@ const fetchJob = async (jobname) => {
 };
 
 export async function generateMetadata({ params }) {
-  const { jobname } = params; 
+  const { jobname } = await params;
   const job = await fetchJob(jobname);
 
   return {
@@ -43,13 +45,11 @@ export async function generateMetadata({ params }) {
       description: job.jobDescription,
     },
   };
-
 }
 
 // Page Component
 const Page = async ({ params }) => {
   const { jobname } = await params;
-  console.log(jobname)
   const job = await fetchJob(jobname);
 
   if (!job) {
@@ -60,11 +60,8 @@ const Page = async ({ params }) => {
     );
   }
 
-
   return (
     <>
-     
-
       <WrapPopUp />
       <SocialMediaBar />
       <div className="container mx-auto min-h-screen">

@@ -39,7 +39,7 @@ export async function GET(request) {
         category,
       });
     } else {
-      const categories = await CategoryModel.find({});
+      const categories = await CategoryModel.find({}).sort({ createdAt: -1 });;
       return NextResponse.json({ success: true, msg: "All Jobs", categories });
     }
   } catch (error) {

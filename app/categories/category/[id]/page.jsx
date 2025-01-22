@@ -25,8 +25,7 @@ export async function generateMetadata({ params }) {
 }
 
 const page = async ({ params }) => {
-  const { id } =await params;
-  console.log("id", id);
+  const { id } = await params;
   let data = await fetchCategoryById(id);
 
   // Handle case where job data is not available

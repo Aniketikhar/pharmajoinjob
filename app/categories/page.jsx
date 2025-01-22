@@ -23,8 +23,6 @@ export async function generateMetadata() {
 const page = async () => {
   let categories = await fetchCategory();
 
-
-
   const colors = [
     "#898b13",
     "#00008B",
