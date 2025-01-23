@@ -12,7 +12,7 @@ const page = () => {
   return (
     <div className="px-5 py-10 container mx-auto shadow-lg shadow-gray-500">
       <h1 className="text-3xl font-bold mb-6">
-        Welcome to Pharmajoin.in - Your Gateway to the Indian Pharmaceutical
+        Welcome to Pharmajoin - Your Gateway to the Indian Pharmaceutical
         Industry
       </h1>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
@@ -27,7 +27,7 @@ const page = () => {
             platforms, specializing in connecting professionals in the Chemical
             and Pharmaceutical sectors with the best opportunities.
           </p>
-          <h2 className="text-xl font-semibold mb-2">About us?</h2>
+          <h2 className="text-xl font-semibold mb-2">About Us?</h2>
           <p className="text-base mb-6">
             We provide recruiters with free access to an extensive pool of
             highly qualified candidates. Our wide-reaching network includes:
