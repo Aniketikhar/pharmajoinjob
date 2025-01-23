@@ -59,11 +59,11 @@ const Hero = ({ jobs }) => {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentSlide((prevSlide) => (prevSlide + 1) % backgroundImages.length);
+      setCurrentSlide((prevSlide) => (prevSlide + 1) % backgroundImages?.length);
     }, 5000);
 
     return () => clearInterval(interval); // Cleanup interval on unmount
-  }, [backgroundImages.length]);
+  }, [backgroundImages?.length]);
 
   
 

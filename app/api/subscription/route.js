@@ -12,7 +12,7 @@ export async function GET(request) {
   try {
     const subscriptions = await SubscriptionModel.find({}).sort({ date: -1 });
 
-    if (subscriptions.length === 0) {
+    if (subscriptions?.length === 0) {
       return NextResponse.json(
         { success: true, msg: "No subscriptions found" },
         { status: 200 }

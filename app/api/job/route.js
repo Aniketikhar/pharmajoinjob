@@ -34,7 +34,7 @@ export async function GET(request) {
         ],
       }).sort({ createdAt: -1 });;
 
-      if (jobs.length === 0) {
+      if (jobs?.length === 0) {
         return NextResponse.json(
           { success: false, msg: "No jobs found matching the criteria" },
           { status: 200 }

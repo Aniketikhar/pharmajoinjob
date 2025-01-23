@@ -25,7 +25,7 @@ export async function GET(request) {
         );
       }
 
-      if (!jobs.length) {
+      if (!jobs?.length) {
         return NextResponse.json(
           { success: false, msg: "Jobs not found" },
           { status: 200 }

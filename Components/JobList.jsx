@@ -65,7 +65,7 @@ const JobList = ({ jobs }) => {
       <div className="flex justify-center">
         <Pagination
           current={currentPage}
-          total={filteredJobs.length}
+          total={filteredJobs?.length}
           pageSize={itemsPerPage}
           onChange={handlePageChange}
           style={{ marginTop: "20px" }}

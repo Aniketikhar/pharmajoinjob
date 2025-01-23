@@ -41,7 +41,7 @@ const page = async () => {
 
   // Function to get a random color and create a gradient with its shades
   const getRandomGradient = () => {
-    const randomColor = colors[Math.floor(Math.random() * colors.length)];
+    const randomColor = colors[Math.floor(Math.random() * colors?.length)];
     return randomColor;
   };
 
