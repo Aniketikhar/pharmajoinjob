@@ -7,14 +7,11 @@ import Loading from "@/Components/Loading";
 export default async function Home() {
   let jobs = await fetchAllJobs();
 
-
   return (
     <>
-        <WrapPopUp />
-        {
-          jobs ? <Hero jobs={jobs} /> : <Loading />
-        }
-        
+      <WrapPopUp />
+
+      <Hero jobs={jobs} />
     </>
   );
 }
