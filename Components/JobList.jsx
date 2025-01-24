@@ -12,6 +12,8 @@ const JobList = ({ jobs }) => {
   //   setFilteredJobs(jobs);
   // }, [jobs])
 
+  console.log("there are jobs ----------", jobs)
+
   useEffect(() => {
     setFilteredJobs(
       filterType

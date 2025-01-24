@@ -28,7 +28,7 @@ export async function fetchAllJobs() {
   const data = await response.json();
   return data.jobs;
   }catch (err){
-    console.log(err);
+    console.log( "something went wrong when jobs fetching-----",err);
     return [];
   }
 }

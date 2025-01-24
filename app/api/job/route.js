@@ -12,8 +12,8 @@ const LoadDB = async () => {
 LoadDB();
 
 export async function GET(request) {
-  const slug = request.nextUrl.searchParams.get("job");
-  const findby = request.nextUrl.searchParams.get("findby");
+  let slug = request.nextUrl.searchParams.get("job");
+  let findby = request.nextUrl.searchParams.get("findby");
 
   try {
     if (slug) {
@@ -115,47 +115,47 @@ export async function POST(request) {
 }
 
 // Update a job
-export async function PUT(request) {
-  const body = await request.json();
-  const { id, ...jobUpdates } = body; // Extract ID and the fields to be updated
+// export async function PUT(request) {
+//   const body = await request.json();
+//   const { id, ...jobUpdates } = body; // Extract ID and the fields to be updated
 
-  if (!id) {
-    return NextResponse.json({
-      success: false,
-      msg: "Job ID is required for update",
-    });
-  }
+//   if (!id) {
+//     return NextResponse.json({
+//       success: false,
+//       msg: "Job ID is required for update",
+//     });
+//   }
 
-  // If category is updated, validate the category ID
-  if (jobUpdates.category) {
-    const category = await CategoryModel.findById(jobUpdates.category);
-    if (!category) {
-      return NextResponse.json({
-        success: false,
-        msg: "Invalid category ID",
-      });
-    }
-  }
+//   // If category is updated, validate the category ID
+//   if (jobUpdates.category) {
+//     const category = await CategoryModel.findById(jobUpdates.category);
+//     if (!category) {
+//       return NextResponse.json({
+//         success: false,
+//         msg: "Invalid category ID",
+//       });
+//     }
+//   }
 
-  const updatedJob = await JobModel.findByIdAndUpdate(
-    id,
-    jobUpdates,
-    { new: true, runValidators: true } // Return updated job and validate updates
-  );
+//   const updatedJob = await JobModel.findByIdAndUpdate(
+//     id,
+//     jobUpdates,
+//     { new: true, runValidators: true } // Return updated job and validate updates
+//   );
 
-  if (!updatedJob) {
-    return NextResponse.json({
-      success: false,
-      msg: "Job not found",
-    });
-  }
+//   if (!updatedJob) {
+//     return NextResponse.json({
+//       success: false,
+//       msg: "Job not found",
+//     });
+//   }
 
-  return NextResponse.json({
-    success: true,
-    msg: "Job updated successfully",
-    job: updatedJob,
-  });
-}
+//   return NextResponse.json({
+//     success: true,
+//     msg: "Job updated successfully",
+//     job: updatedJob,
+//   });
+// }
 
 // Delete a job
 export async function DELETE(request) {

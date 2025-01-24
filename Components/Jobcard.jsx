@@ -9,6 +9,7 @@ import { useRouter } from "next/router";
 import { isRecentPost } from "@/Utils/utils";
 
 export default function JobCard({ job }) {
+  console.log("these are job card------", job)
   const handleShare = async () => {
     if (navigator.share) {
       try {
@@ -27,7 +28,7 @@ export default function JobCard({ job }) {
   };
 
   return (
-    <div className="bg-white p-2 md:p-4 rounded-md shadow-md flex flex-col  md:flex-row md:justify-between md:gap-3 hover:bg-slate-100 border border-gray-200">
+    <div key={job._id} className="bg-white p-2 md:p-4 rounded-md shadow-md flex flex-col  md:flex-row md:justify-between md:gap-3 hover:bg-slate-100 border border-gray-200">
       <div>
         <div className="flex items-center justify-between">
           <div>

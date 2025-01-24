@@ -82,7 +82,7 @@ const Hero = ({ jobs }) => {
         >
           <div className="container mx-auto text-white">
             <h1 className=" text-3xl pt-10 pb-5">
-              Get a New Job with PharmaJoin Right Now!------
+              Get a New Job with PharmaJoin Right Now!
             </h1>
             <p>
               A Pharma Join is a specialized platform designed to connect
