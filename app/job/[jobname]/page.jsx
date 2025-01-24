@@ -9,7 +9,7 @@ const fetchJob = async (jobname) => {
 
   try {
     const response = await fetch(
-      `${process.env.NEXT_PUBLIC_API_URL}/api/job?job=${jobname}`,
+      `https://pharmajoin.in/api/job?job=${jobname}`,
       {
         cache: "no-store", // Avoid caching to ensure fresh data
       }

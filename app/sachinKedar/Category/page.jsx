@@ -27,7 +27,7 @@ const Page = () => {
   const createCategory = async (e) => {
     e.preventDefault();
     setLoading(true);
-    const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/category`, {
+    const response = await fetch(`https://pharmajoin.in/api/category`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -54,7 +54,7 @@ const Page = () => {
 
   const updateCategory = async (id, name, description) => {
     try {
-      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/category`, {
+      const response = await fetch(`https://pharmajoin.in/api/category`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -79,7 +79,7 @@ const Page = () => {
 
   // Delete category function
   const deleteCategory = async (id) => {
-    const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/category?id=${id}`, {
+    const response = await fetch(`https://pharmajoin.in/api/category?id=${id}`, {
       method: "DELETE",
     });
 

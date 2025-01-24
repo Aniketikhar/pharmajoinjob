@@ -24,7 +24,7 @@ const page = () => {
 
   const deleteEmail = async (id) => {
     const response = await fetch(
-      `${process.env.NEXT_PUBLIC_API_URL}/api/subscription?id=${id}`,
+      `https://pharmajoin.in/api/subscription?id=${id}`,
       {
         method: "DELETE",
       }
