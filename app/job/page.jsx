@@ -9,7 +9,7 @@ const page = async ({ searchParams }) => {
   try {
     // Fetch the job details from the API
     const response = await fetch(
-      `https://pharmajoin.in/api/job?findby=${findby}`,
+      `${process.env.NEXT_PUBLIC_API_URL}/api/job?findby=${findby}`,
       {
         cache: "no-store", // Avoid caching to ensure fresh data
       }

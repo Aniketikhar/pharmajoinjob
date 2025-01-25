@@ -25,7 +25,7 @@ const page = () => {
 
   const deleteJob = async (id) => {
     const response = await fetch(
-      `https://pharmajoin.in/api/job?id=${id}`,
+      `${process.env.NEXT_PUBLIC_API_URL}/api/job?id=${id}`,
       {
         method: "DELETE",
       }
