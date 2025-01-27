@@ -73,7 +73,7 @@ export default function FullJob({ job }) {
         <p>{job?.jobRole}</p>
       </div>
       <h2 className="bg-slate-100 text-xl p-1">Job Description</h2>
-      <p id="jd" ref={descriptionRef} className="text-gray-600"></p>
+      <p id="jd" ref={descriptionRef} className=""></p>
       {/* <div className="py-2">
         <JobDescription descriptionHTML={job?.jobDescription} />
       </div> */}
