@@ -3,7 +3,8 @@ import "./globals.css";
 import Header from "@/Components/Header";
 import { Suspense } from "react";
 import Footer from "@/Components/Footer";
-import { GoogleAnalytics } from "nextjs-google-analytics";
+import GoogleAnalyticsWrapper from "@/Components/GoogleAnalyticsWrapper";
+
 
 export const metadata = {
   title: "Pharma Join",
@@ -42,10 +43,7 @@ export default function RootLayout({ children }) {
       </head>
       <body className={`antialiased`}>
         <Header />
-        <GoogleAnalytics
-          trackPageViews
-          gaId={process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS}
-        />
+        <GoogleAnalyticsWrapper />
         <Suspense fallback={<div>Loading... suspense hoook</div>}>
           {children}
         </Suspense>
