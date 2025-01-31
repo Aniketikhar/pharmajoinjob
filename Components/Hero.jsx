@@ -22,7 +22,7 @@ const Hero = () => {
       .then((data) => {
         setJobs(data);
         setFilteredJobs(data);
-        console.log("this are jobs comes to hero page: ",data)
+        console.log("this are jobs comes to hero page: ", data);
       })
       .catch((error) => console.error(error));
   }, []);
@@ -56,7 +56,15 @@ const Hero = () => {
   };
 
   // Background images for the slider
-  const backgroundImages = [assets.banner1, assets.banner2];
+  const backgroundImages = [
+    assets.banner1,
+    assets.banner2,
+    assets.banner3,
+    assets.banner4,
+    assets.banner5,
+    assets.banner6,
+    assets.banner7,
+  ];
 
   useEffect(() => {
     fetchCategory()

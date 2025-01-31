@@ -17,7 +17,7 @@ const PostJobForm = () => {
     handleSubmit,
     setValue,
     formState: { errors },
-    reset
+    reset,
   } = useForm();
   const [categories, setCategories] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -29,28 +29,39 @@ const PostJobForm = () => {
       ? data?.tags.map((tag) => tag.trim()) // Ensure tags are trimmed
       : data?.tags.split(",").map((tag) => tag.trim());
 
-    const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/job`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ ...data, tags: formattedTags }),
-    });
+    try {
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_API_URL}/api/job`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ ...data, tags: formattedTags }),
+        }
+      );
 
-    const datar = await response.json();
-    if (datar.success) {
-      toast.success("Job created successfully");
-      setLoading(false);
-      reset();
-    } else {
-      toast.error("Failed to create Job");
+      const datar = await response.json();
+      if (datar.success) {
+        toast.success("Job created successfully");
+        setLoading(false);
+        reset();
+      } else {
+        toast.error("Failed to create Job");
+        setLoading(false);
+      }
+    } catch (err) {
+      console.error(err);
+      toast.error("Failed to create Job. Please try again later.");
       setLoading(false);
     }
   };
 
   // Fetch categories function
   const fetchCategories = async () => {
-    const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/category`);
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_API_URL}/api/category`
+    );
     const data = await response.json();
     setCategories(data.categories);
   };
@@ -266,10 +277,12 @@ const PostJobForm = () => {
               Category<span className="text-red-500">*</span>
             </label>
             <select
-              {...register("categoryId", {required: "category is required"})}
+              {...register("categoryId", { required: "category is required" })}
               className="mt-1 block w-full p-2 border border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500"
             >
-              <option key='0' value="">Select...</option>
+              <option key="0" value="">
+                Select...
+              </option>
               {categories?.map((category) => (
                 <option key={category._id} value={category._id}>
                   {category.name}
@@ -309,7 +322,7 @@ const PostJobForm = () => {
             type="submit"
             className="w-full bg-indigo-600 text-white py-2 px-4 rounded-md hover:bg-indigo-700"
           >
-            {loading ? "Posting...": "Post Job"} 
+            {loading ? "Posting..." : "Post Job"}
           </button>
         </div>
       </form>

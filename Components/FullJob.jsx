@@ -5,7 +5,7 @@ import { IoTimeSharp } from "react-icons/io5";
 import { MdHomeWork } from "react-icons/md";
 import { PiMoneyWavyFill } from "react-icons/pi";
 import JobDescription from "./JobDescription";
-import { formatDate, isRecentPost } from "@/Utils/utils";
+import { formatDate, handleLinkClick, isRecentPost } from "@/Utils/utils";
 
 export default function FullJob({ job }) {
   const descriptionRef = useRef(null);
@@ -16,6 +16,8 @@ export default function FullJob({ job }) {
       descriptionRef.current.innerHTML = job.jobDescription;
     }
   }, [job.jobDescription]);
+
+
   return (
     <div className="bg-white p-4 shadow-md flex flex-col gap-3 border border-gray-200">
       <div className="flex items-center justify-between">
@@ -142,9 +144,7 @@ export default function FullJob({ job }) {
             <tr>
               <td className="border border-gray-300 px-4 py-2">Apply Link</td>
               <td className="border border-gray-300 px-4 py-2 text-blue-500 text-right">
-                <a href={job?.applyLink} className="hover:underline">
-                  Apply Now
-                </a>
+              <button onClick={() => handleLinkClick(jobLink)}>Apply Now</button>
               </td>
             </tr>
           </tbody>

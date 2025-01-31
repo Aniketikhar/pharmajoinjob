@@ -1,8 +1,7 @@
-const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
 export async function fetchCategory() {
   try{
-  const response = await fetch(`${API_URL}/api/category`, {
+  const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/category`, {
     headers: {
       'Cache-Control': 'no-store',
     },
@@ -17,7 +16,7 @@ export async function fetchCategory() {
 
 export async function fetchCategoryById(id) {
   try{
-  const response = await fetch(`${API_URL}/api/category?id=${id}`, {
+  const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/category?id=${id}`, {
     headers: {
       'Cache-Control': 'no-store',
     },
@@ -32,7 +31,7 @@ export async function fetchCategoryById(id) {
 
 export async function fetchAllJobs() {
   try{
-  const response = await fetch(`${API_URL}/api/job`, {
+  const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/job`, {
     headers: {
       'Cache-Control': 'no-store',
     },
@@ -81,4 +80,22 @@ export const isRecentPost = (postDate) => {
   const diffInDays = diffInMs / (1000 * 60 * 60 * 24);
 
   return diffInDays <= 2; // Check if the difference is 2 days or less
+};
+
+
+export const handleLinkClick = (link) => {
+  if (!link) return;
+
+  // Regular expression to check if it's an email
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+  if (emailRegex.test(link)) {
+    // Open Gmail compose window
+    window.open(`https://mail.google.com/mail/?view=cm&fs=1&to=${link}`, "_blank");
+  } else if (link.startsWith("http://") || link.startsWith("https://")) {
+    // Open external link
+    window.open(link, "_blank");
+  } else {
+    alert("Invalid link or email format");
+  }
 };
