@@ -144,7 +144,7 @@ export default function FullJob({ job }) {
             <tr>
               <td className="border border-gray-300 px-4 py-2">Apply Link</td>
               <td className="border border-gray-300 px-4 py-2 text-blue-500 text-right">
-              <button onClick={() => handleLinkClick(jobLink)}>Apply Now</button>
+              <button className="hover:underline" onClick={() => handleLinkClick(job?.applyLink)}>Apply Now</button>
               </td>
             </tr>
           </tbody>
