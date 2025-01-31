@@ -3,6 +3,7 @@ import "./globals.css";
 import Header from "@/Components/Header";
 import { Suspense } from "react";
 import Footer from "@/Components/Footer";
+import { GoogleAnalytics } from "nextjs-google-analytics";
 
 export const metadata = {
   title: "Pharma Join",
@@ -33,11 +34,18 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <head>
-      <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7099571411029187"
-     crossOrigin="anonymous"></script>
+        <script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7099571411029187"
+          crossOrigin="anonymous"
+        ></script>
       </head>
       <body className={`antialiased`}>
         <Header />
+        <GoogleAnalytics
+          trackPageViews
+          gaId={process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS}
+        />
         <Suspense fallback={<div>Loading... suspense hoook</div>}>
           {children}
         </Suspense>
