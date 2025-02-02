@@ -37,8 +37,6 @@ export async function POST(request) {
   const body = await request.json();
   const email = body.email;
 
-  console.log("env variable mongo url: ", process.env.NEXT_DB_URL)
-  console.log("env variable domain: ", process.env.NEXT_PUBLIC_API_URL)
 
   if (!email) {
     return NextResponse.json({

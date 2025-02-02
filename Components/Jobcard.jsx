@@ -9,7 +9,6 @@ import { useRouter } from "next/router";
 import { isRecentPost } from "@/Utils/utils";
 
 export default function JobCard({ job }) {
-  console.log("these are job card------", job)
   const handleShare = async () => {
     if (navigator.share) {
       try {
@@ -34,7 +33,7 @@ export default function JobCard({ job }) {
           <div>
             <h3 className="text-sm md:text-lg font-medium">{job.company}</h3>
             <h2 className="text-lg md:text-2xl font-bold text-gray-900">
-              {job.title}&nbsp;{job.postDate && isRecentPost(job.postDate) && (<span className="bg-blue-100 text-blue-700 text-xs px-2 py-1 rounded-lg">New Job</span>)}
+              {job.title}&nbsp;{job.postDate && isRecentPost(job.postDate) && (<span className="bg-blue-100 text-blue-700 text-xs px-2 inline-block w-20 py-1 rounded-lg">New Job</span>)}
             </h2>
           </div>
    

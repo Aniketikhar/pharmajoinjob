@@ -1,10 +1,8 @@
-import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Header from "@/Components/Header";
 import { Suspense } from "react";
 import Footer from "@/Components/Footer";
-import GoogleAnalyticsWrapper from "@/Components/GoogleAnalyticsWrapper";
-
+import { GoogleAnalytics } from "@next/third-parties/google";
 
 export const metadata = {
   title: "Pharma Join",
@@ -32,6 +30,8 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
+  const k = process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS;
+
   return (
     <html lang="en">
       <head>
@@ -43,12 +43,13 @@ export default function RootLayout({ children }) {
       </head>
       <body className={`antialiased`}>
         <Header />
-        <GoogleAnalyticsWrapper />
+
         <Suspense fallback={<div>Loading... suspense hoook</div>}>
           {children}
         </Suspense>
         <Footer />
       </body>
+      {k && <GoogleAnalytics gaId={k} />}
     </html>
   );
 }

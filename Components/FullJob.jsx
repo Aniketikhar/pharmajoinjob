@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { FaLocationDot, FaUserGraduate } from "react-icons/fa6";
 import { IoTimeSharp } from "react-icons/io5";
 import { MdHomeWork } from "react-icons/md";
@@ -9,6 +9,7 @@ import { formatDate, handleLinkClick, isRecentPost } from "@/Utils/utils";
 
 export default function FullJob({ job }) {
   const descriptionRef = useRef(null);
+  const [applybtn, setApplyBtn] = useState(false);
 
   useEffect(() => {
     if (descriptionRef.current) {
@@ -16,6 +17,10 @@ export default function FullJob({ job }) {
       descriptionRef.current.innerHTML = job.jobDescription;
     }
   }, [job.jobDescription]);
+
+  const handleApplyBtn = () => {
+    setApplyBtn(!applybtn);
+  }
 
 
   return (
@@ -35,13 +40,13 @@ export default function FullJob({ job }) {
       <div className="flex flex-shrink-0 gap-4 md:gap-6 flex-wrap items-center text-sm text-gray-500 ">
         {job?.location && (
           <span className="flex items-center">
-            <FaLocationDot className="inline" />
+            <FaLocationDot className="inline text-orange-500" />
             &nbsp;{job?.location}
           </span>
         )}
         {job?.workMode && (
           <span className="flex items-center">
-            <MdHomeWork className="inline" />
+            <MdHomeWork className="inline text-orange-500" />
             &nbsp;
             {job.workMode == "Work from Office"
               ? "WFO"
@@ -52,19 +57,19 @@ export default function FullJob({ job }) {
         )}
         {job?.jobType && (
           <span className="flex items-center">
-            <IoTimeSharp className="inline" />
+            <IoTimeSharp className="inline text-orange-500" />
             &nbsp;{job?.jobType}
           </span>
         )}
         {job?.salary && (
           <span className="flex items-center">
-            <PiMoneyWavyFill className="inline" />
+            <PiMoneyWavyFill className="inline text-orange-500" />
             &nbsp;{job?.salary}
           </span>
         )}
         {job?.jobLevel && (
           <span className="flex items-center">
-            <FaUserGraduate className="inline" />
+            <FaUserGraduate className="inline text-orange-500" />
             &nbsp;{job?.jobLevel}
           </span>
         )}
@@ -108,6 +113,14 @@ export default function FullJob({ job }) {
           </li>
         </ul>
       </div>
+      <div>
+        <button className="py-2 px-3 mb-3 bg-orange-500 text-white hover:bg-blue-500" onClick={handleApplyBtn}>
+          Apply Now
+        </button>
+        <div className={applybtn ? "block" : "hidden"}>
+          {job?.applyLink}
+        </div>
+      </div>
       <div className="overflow-x-auto">
         <table className="table-auto border-collapse border border-gray-300 w-full">
           <thead>
@@ -141,12 +154,7 @@ export default function FullJob({ job }) {
                 </a>
               </td>
             </tr>
-            <tr>
-              <td className="border border-gray-300 px-4 py-2">Apply Link</td>
-              <td className="border border-gray-300 px-4 py-2 text-blue-500 text-right">
-              <button className="hover:underline" onClick={() => handleLinkClick(job?.applyLink)}>Apply Now</button>
-              </td>
-            </tr>
+           
           </tbody>
         </table>
       </div>
