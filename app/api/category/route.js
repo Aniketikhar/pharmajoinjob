@@ -15,7 +15,7 @@ export async function GET(request) {
     const categryId = request.nextUrl.searchParams.get("id");
 
     if (categryId) {
-      const jobs = await JobModel.find({ category: categryId });
+      const jobs = await JobModel.find({ category: categryId }).select('-jobDescription').sort({ createdAt: -1 });
       const category = await CategoryModel.findById(categryId);
 
       if (!category) {

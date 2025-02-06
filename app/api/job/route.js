@@ -26,13 +26,14 @@ export async function GET(request) {
       }
 
       return NextResponse.json({ success: true, msg: "this is Job", job });
+
     } else if (findby) {
       const jobs = await JobModel.find({
         $or: [
           { tags: { $in: [new RegExp(`^${findby}$`, "i")] } }, // Case-insensitive regex for tags
           { location: { $regex: new RegExp(`^${findby}$`, "i") } } // Case-insensitive regex for location
         ],
-      }).sort({ createdAt: -1 });;
+      }).select('-jobDescription').sort({ createdAt: -1 });
 
       if (jobs?.length === 0) {
         return NextResponse.json(
@@ -43,7 +44,8 @@ export async function GET(request) {
 
       return NextResponse.json({ success: true, msg: "Jobs found", jobs });
     } else {
-      const jobs = await JobModel.find({}).sort({ createdAt: -1 });;
+      const jobs = await JobModel.find({}).select("-jobDescription").sort({ createdAt: -1 });
+      
 
       return NextResponse.json({ success: true, msg: "All Jobs", jobs });
     }
