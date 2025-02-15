@@ -84,6 +84,7 @@ const Footer = () => {
       <ul className="flex justify-center gap-5">
         <li><a href="/aboutus">About Us</a></li>|
         <li><a href="/privacy-policies">Privacy Policy</a></li>|
+        <li><a href="/privacy-policies">Term of Services</a></li>|
         <li><a href="/contact">Contact Us</a></li>
       </ul>
     </div>

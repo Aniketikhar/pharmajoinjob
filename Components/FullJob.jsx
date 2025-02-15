@@ -14,9 +14,9 @@ export default function FullJob({ job }) {
   useEffect(() => {
     if (descriptionRef.current) {
       // Set the innerHTML directly
-      descriptionRef.current.innerHTML = job.jobDescription;
+      descriptionRef.current.innerHTML = job?.jobDescription;
     }
-  }, [job.jobDescription]);
+  }, [job?.jobDescription]);
 
   const handleApplyBtn = () => {
     setApplyBtn(!applybtn);

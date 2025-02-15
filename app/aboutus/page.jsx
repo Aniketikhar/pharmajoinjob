@@ -1,6 +1,6 @@
 import { assets } from "@/Assets/assets";
 import React from "react";
-import about from "@/Assets/aboutus.png"
+
 
 export const metadata = {
   title: "About Us | Pharma Join",
@@ -12,57 +12,53 @@ const page = () => {
   return (
     <div className="px-5 py-10 container mx-auto shadow-lg shadow-gray-500">
       <h1 className="text-3xl font-bold mb-6">
-        Welcome to Pharmajoin - Your Gateway to the Indian Pharmaceutical
-        Industry
+        Pharmajoin - About Us
       </h1>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-        {/* Text Section */}
-        <div>
-          <p className="text-base mb-6">
-            <span className="font-semibold">
-              Post Your Job - Chemical and Pharma Industries
-            </span>
-            <br />
-            We are proud to present ourselves as one of India's top emerging job
-            platforms, specializing in connecting professionals in the Chemical
-            and Pharmaceutical sectors with the best opportunities.
-          </p>
-          <h2 className="text-xl font-semibold mb-2">About Us?</h2>
-          <p className="text-base mb-6">
-            We provide recruiters with free access to an extensive pool of
-            highly qualified candidates. Our wide-reaching network includes:
-          </p>
-          <h2 className="text-xl font-semibold mb-2">
-            Our Services and Features
-          </h2>
-          <p className="text-base mb-6">
-            - Active WhatsApp group members
-            <br />
-            - A growing base of LinkedIn followers
-            <br />
-            - Engaged Telegram group members
-            <br />
-            How to Post a Job?
-          </p>
-          <p className="text-base">
-            Simply send your job description to{" "}
-            <span className="font-medium">Pharmajoin9@gmail.com</span>, and our
-            team, led by Hemant Tapkir, will ensure it reaches the right
-            audience.
-            <br />
-            Leverage our vast network to connect with top talent and find the
-            perfect fit for your organization.
-          </p>
-        </div>
+      <div className="flex flex-col lg:flex-row gap-8 items-center">
+        <div className="flex-1 max-w-5xl mx-auto px-6 py-12">
+          <h1 className="text-4xl font-bold text-center mb-6">
+            About PharmaJoin
+          </h1>
 
-        {/* Image Section */}
-        {/* <div>
-          <img
-            src={`${about}`} // Replace with your image URL
-            alt="Pharmaceutical Industry"
-            className="w-full h-auto rounded-lg shadow-md"
-          />
-        </div> */}
+          <section className="mb-8">
+            <h2 className="text-2xl font-semibold mb-2">Our Mission</h2>
+            <p className="text-gray-700">
+              At PharmaJoin, we aim to bridge the gap between pharmaceutical
+              professionals and leading job opportunities, ensuring a seamless
+              hiring experience for both employers and candidates.
+            </p>
+          </section>
+
+          <section className="mb-8">
+            <h2 className="text-2xl font-semibold mb-2">Our Vision</h2>
+            <p className="text-gray-700">
+              Our vision is to be the leading platform that simplifies
+              recruitment in the pharmaceutical industry by leveraging
+              technology to connect the right talent with the right employers.
+            </p>
+          </section>
+
+          <section className="mb-8">
+            <h2 className="text-2xl font-semibold mb-2">
+              Why Choose PharmaJoin?
+            </h2>
+            <ul className="list-disc pl-5 text-gray-700">
+              <li>Easy job search and application process</li>
+              <li>Verified job listings from top pharmaceutical companies</li>
+              <li>Advanced filtering to find the right match</li>
+            </ul>
+          </section>
+        </div>
+      
+
+      {/* Image Section */}
+      <div className="flex-1">
+        <img
+          src={assets.aboutus.src} // Replace with your image URL
+          alt="Pharmaceutical Industry"
+          className="w-full h-auto rounded-lg shadow-md"
+        />
+      </div>
       </div>
     </div>
   );

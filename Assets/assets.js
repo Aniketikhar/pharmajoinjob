@@ -12,7 +12,7 @@ import banner4 from "@/Assets/banner4.webp";
 import banner5 from "@/Assets/banner5.webp";
 import banner6 from "@/Assets/banner6.webp";
 import banner7 from "@/Assets/banner7.webp";
-import aboutus from "@/Assets/aboutus.png";
+import aboutus from "@/Assets/aboutus.jpg";
 import whatsbanner from "@/Assets/whatsbanner.png";
 import telebanner from "@/Assets/telebanner.png";
 
